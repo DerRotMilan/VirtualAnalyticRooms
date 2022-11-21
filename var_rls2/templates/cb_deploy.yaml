@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  {{ include "cloudbeaver.fullname" . }}
+  name:  {{ include "var.fullname" . }}
   labels:
-    {{- include "cloudbeaver.labels" . | nindent 4 }}
+    {{- include "var.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-            {{- include "cloudbeaver.selectorLabels" . | nindent 6 }}
+            {{- include "var.selectorLabels" . | nindent 6 }}
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-        {{- include "cloudbeaver.selectorLabels" . | nindent 8 }}
+        {{- include "var.selectorLabels" . | nindent 8 }}
     spec:
       containers:
         - name: app
