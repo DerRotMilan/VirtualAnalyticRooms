@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name:  {{ include "cloudbeaver.fullname" . }}
+  name:  {{ include "var.fullname" . }}
 spec:
   selector:
-      {{- include "cloudbeaver.selectorLabels" . | nindent 6 }}
+      {{- include "var.selectorLabels" . | nindent 6 }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 8978
