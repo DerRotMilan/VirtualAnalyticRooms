@@ -10,7 +10,7 @@ metadata:
     description: "Virtual Analytic Rooms Dashboard app"
 spec:
   components:
-    - componentName: {{ .Release.Name }}-meta-component
+    - componentName: {{ .Release.Name }}-rest-component
       traits:
         - trait:
             apiVersion: oam.verrazzano.io/v1alpha1
