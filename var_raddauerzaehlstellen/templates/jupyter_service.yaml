@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name:  {{ include "var.fullname" . }}-jupyter
   annotations:
-    field.cattle.io/publicEndpoints: '[{"addresses":["138.2.178.174"],"port":8889,"protocol":"TCP","serviceName":"rls1var:rls2-raddauerzaehlstellen-jupyter","allNodes":false}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["141.147.19.200"],"port":8889,"protocol":"TCP","serviceName":"rls1var:rls2-raddauerzaehlstellen-jupyter","allNodes":false}]'
     meta.helm.sh/release-name: radlauf
     meta.helm.sh/release-namespace: raddauerzaehlstellen
     var/component: jupyter notebook
