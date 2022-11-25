@@ -2,6 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name:  {{ include "var.fullname" . }}-jupyter
+  annotations:
+    field.cattle.io/publicEndpoints: '[{"addresses":["130.61.194.68"],"port":8889,"protocol":"TCP","serviceName":"oml4py:radlauf-radlaufstellen-jupyter","allNodes":false}]'
+    meta.helm.sh/release-name: radlauf
+    meta.helm.sh/release-namespace: oml4py
+    var/component: jupyter notebook
+    var/name: radlaufstellen
+    var/shortdesc: 'Anwendungs-Stack mit Datenbank, Analysedaten und Analysewerkzeug,
+      hier: Fahrrad-Durchlaufzahlen'
+  creationTimestamp: "2022-11-03T20:59:10Z"
 spec:
   selector:
       {{- include "var.selectorLabels" . | nindent 6 }}

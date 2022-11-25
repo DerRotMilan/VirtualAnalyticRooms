@@ -2,6 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name:  {{ include "var.fullname" . }}
+  annotations:
+    field.cattle.io/publicEndpoints: '[{"addresses":["138.3.245.240"],"port":8080,"protocol":"TCP","serviceName":"oml4py:raddauerzaehlstellenvar","allNodes":false}]'
+    meta.helm.sh/release-name: radlauf
+    meta.helm.sh/release-namespace: oml4py
+    var/component: cloudbeaver
+    var/name: raddauerzaehlstellen
+    var/shortdesc: 'Anwendungs-Stack mit Datenbank, Analysedaten und Analysewerkzeug,
+      hier: Fahrrad-Durchlaufzahlen'
+  creationTimestamp: "2022-11-03T20:59:10Z"
 spec:
   selector:
       {{- include "var.selectorLabels" . | nindent 6 }}
