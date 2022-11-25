@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name:  {{ include "var.fullname" . }}
   annotations:
-    field.cattle.io/publicEndpoints: '[{"addresses":["138.3.245.240"],"port":8080,"protocol":"TCP","serviceName":"oml4py:raddauerzaehlstellenvar","allNodes":false}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["138.3.245.240"],"port":8080,"protocol":"TCP","serviceName":"rls1var:rsl2","allNodes":false}]'
     meta.helm.sh/release-name: radlauf
     meta.helm.sh/release-namespace: oml4py
     var/component: cloudbeaver

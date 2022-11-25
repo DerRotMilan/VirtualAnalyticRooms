@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name:  {{ include "var.fullname" . }}-jupyter
   annotations:
-    field.cattle.io/publicEndpoints: '[{"addresses":["130.61.194.68"],"port":8889,"protocol":"TCP","serviceName":"oml4py:radlauf-radlaufstellen-jupyter","allNodes":false}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["130.61.194.68"],"port":8889,"protocol":"TCP","serviceName":"rls1var:radlauf-radlaufstellen-jupyter","allNodes":false}]'
     meta.helm.sh/release-name: radlauf
     meta.helm.sh/release-namespace: oml4py
     var/component: jupyter notebook
