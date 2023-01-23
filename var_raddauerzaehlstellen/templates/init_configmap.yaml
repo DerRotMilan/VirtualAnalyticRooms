@@ -7,7 +7,8 @@ data:
       whenever sqlerror exit failure;\n
       connect sys/$DB_PASSWORD@{{ .Values.database.hostname }}:1521/orclpdb1 as sysdba\n
       select * from dual;\n
-      exit;\nEOF\n
+      exit;\n
+      EOF\n
       if [ $? -eq 0 ] ; then echo \"connect successful\" ; else echo \"DB connect failed, waiting 2 mins and exiting...\" ; sleep 120 ; exit 5 ; fi "
     01_setPassword.sh: "#!/bin/bash\n
       sqlplus / AS SYSDBA << EOF\n
