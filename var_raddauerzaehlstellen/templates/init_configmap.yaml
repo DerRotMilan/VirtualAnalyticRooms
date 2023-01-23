@@ -112,12 +112,10 @@ data:
       ) \n
       TABLESPACE \"TBS_DMS\"\n
       ;\n"
-    dbhelper-03-create_sequence_raddauerzaehlstellen.sql: CREATE SEQUENCE oml4pyuser.sq_raddauerzaehlstellen
-      INCREMENT BY 1 START WITH 1;
+    dbhelper-03-create_sequence_raddauerzaehlstellen.sql: "CREATE SEQUENCE oml4pyuser.sq_raddauerzaehlstellen INCREMENT BY 1 START WITH 1;"
     dbhelper-04-create_trigger_raddauerzaehlstellen.sql: "CREATE OR REPLACE TRIGGER oml4pyuser.tr_raddauerzaehlstellen\n
       BEFORE INSERT ON oml4pyuser.RADDAUERZAEHLSTELLEN\n
-      FOR
-      EACH ROW\n
+      FOR EACH ROW\n
       BEGIN\n
       \tIF :new.RDZID IS NULL THEN\n
       \t\tSELECT oml4pyuser.SQ_RADDAUERZAEHLSTELLEN.nextval INTO :new.rdzid FROM DUAL;\n
