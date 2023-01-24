@@ -66,7 +66,6 @@ data:
       EOF \n"
     dbhelper-01a-create_user_oml4pyuser.sql: 
      "ALTER SESSION SET CONTAINER=orclpdb1; \n
-      CREATE OR REPLACE DIRECTORY doedeldir as '/tmp'; \n
       DROP USER oml4pyuser CASCADE; \n
       CREATE USER oml4pyuser IDENTIFIED BY oml4pypwd ; \n
       ALTER USER oml4pyuser DEFAULT TABLESPACE users QUOTA UNLIMITED ON users; \n
@@ -74,7 +73,7 @@ data:
       CREATE TABLESPACE TBS_DMS DATAFILE 'TBS_DMS.dat' SIZE 10M AUTOEXTEND ON; \n
       ALTER USER oml4pyuser QUOTA UNLIMITED ON TBS_DMS; \n
       DROP DIRECTORY DPDIR; \n
-      CREATE OR REPLACE DIRECTORY DPDIR as '/dpdir'; \n
+      CREATE OR REPLACE DIRECTORY DPDIR as '/tmp'; \n
       GRANT read, write ON DIRECTORY DPDIR to oml4pyuser; \n
       GRANT UNLIMITED TABLESPACE TO oml4pyuser; \n
       GRANT CREATE SESSION TO oml4pyuser; \n
