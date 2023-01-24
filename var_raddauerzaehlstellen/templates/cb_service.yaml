@@ -3,9 +3,6 @@ kind: Service
 metadata:
   name:  {{ include "var.fullname" . }}-cloudbeaver
   annotations:
-    field.cattle.io/publicEndpoints: '[{"addresses":["132.145.247.240"],"port":8080,"protocol":"TCP","serviceName":"rls2var:rls2-raddauerzaehlstellen-cloudbeaver","allNodes":false}]'
-    meta.helm.sh/release-name: radlauf
-    meta.helm.sh/release-namespace: raddauerzaehlstellen
     var/component: cloudbeaver
     var/name: raddauerzaehlstellen
     var/shortdesc: 'Anwendungs-Stack mit Datenbank, Analysedaten und Analysewerkzeug,
