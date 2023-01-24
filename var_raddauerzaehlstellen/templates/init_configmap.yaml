@@ -10,7 +10,7 @@ data:
       select * from dual; \n
       exit; \n
       EOF \n
-      if [ $? -eq 0 ] ; then echo \"connect successful\" ; else echo \"DB connect failed, waiting 2 mins and exiting...\" ; sleep 120 ; exit 5 ; fi "
+      if [ $? -eq 0 ] ; then echo \"connect successful\" ; else echo \"DB connect failed, waiting 2 mins and exiting...\" ; sleep 120 ; exit 5 ; fi"
     01_setPassword.sh: 
      "#!/bin/bash\n
       sqlplus / AS SYSDBA << EOF \n
@@ -66,6 +66,7 @@ data:
       EOF \n"
     dbhelper-01a-create_user_oml4pyuser.sql: 
      "ALTER SESSION SET CONTAINER=orclpdb1; \n
+      CREATE OR REPLACE DIRECTORY doedeldir as '/tmp'; \n
       DROP USER oml4pyuser CASCADE; \n
       CREATE USER oml4pyuser IDENTIFIED BY oml4pypwd ; \n
       ALTER USER oml4pyuser DEFAULT TABLESPACE users QUOTA UNLIMITED ON users; \n
@@ -137,7 +138,8 @@ data:
       END; \n
       / \n
       "
-    dbhelper-05-load-raddauerzaehlstellen.ctl: "OPTIONS\n
+    dbhelper-05-load-raddauerzaehlstellen.ctl: 
+     "OPTIONS\n
       ( SKIP=1 \n
       , ROWS=10000 \n
       , BINDSIZE=2000000000 \n
