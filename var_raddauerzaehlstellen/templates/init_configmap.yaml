@@ -51,7 +51,9 @@ data:
       cd /tmp \n
       /usr/lib/oracle/21/client64/bin/sqlldr oml4pyuser/oml4pypwd@//{{ .Values.database.hostname }}/ORCLPDB1:1521 control=/scripts/dbhelper-05-load-raddauerzaehlstellen.ctl\n"
     InitSchema-03.sh: 
-     "curl https://raw.githubusercontent.com/ilfur/VirtualAnalyticRooms/main/VARdata/masked_data.DMP -o /tmp/masked_data.DMP \n
+     "echo getting dump file \n
+      curl https://raw.githubusercontent.com/ilfur/VirtualAnalyticRooms/main/VARdata/masked_data.DMP -o /tmp/masked_data.DMP \n
+      ls -l /tmp \n
       /usr/lib/oracle/21/client64/bin/impdp oml4pyuser/oml4pypwd@//{{ .Values.database.hostname }}/ORCLPDB1:1521 DIRECTORY=DPDIR DUMPFILE=masked_data.DMP TABLES=oml4pyuser.raddauerzaehlstellen REMAP_TABLE=oml4pyuser.raddauerzaehlstellen:raddauerzaehlstellen_m \n"
     InitSchema-04.sh: 
      "/opt/oracle/sqlcl/bin/sql sys/\"$DB_PASSWORD\"@{{ .Values.database.hostname }}/ORCLPDB1:1521 as sysdba << EOF \n
