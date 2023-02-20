@@ -1,0 +1,28 @@
+apiVersion: core.oam.dev/v1alpha2
+kind: Component
+metadata:
+  name: {{ .Release.Name }}-cb-component
+  namespace: {{ .Release.Namespace }}
+spec:
+  workload:
+    apiVersion: oam.verrazzano.io/v1alpha1
+    kind: VerrazzanoHelidonWorkload
+    metadata:
+      name: {{ .Release.Name }}-cb-workload
+      labels:
+        app: helm-meta
+        version: v1
+    spec:
+      deploymentTemplate:
+        metadata:
+          name: {{ .Release.Name }}-cb-deployment
+        podSpec:
+          containers:
+            - name: {{ .Release.Name }}-cb-container
+              image: {{ .Values.image.repository }}
+              imagePullPolicy: Always
+              ports:
+                - containerPort: {{ .Values.service.port }}
+                  name: http
+                  #imagePullSecrets:
+                  #- name: docker-secret
