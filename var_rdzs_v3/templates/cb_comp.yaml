@@ -1,28 +1,71 @@
 apiVersion: core.oam.dev/v1alpha2
-kind: Component
+kind: ComponentSchematic
 metadata:
-  name: {{ .Release.Name }}-cb-component
-  namespace: {{ .Release.Namespace }}
+  name: {{ include "var.fullname" . }}
 spec:
   workload:
-    apiVersion: oam.verrazzano.io/v1alpha1
-    kind: VerrazzanoHelidonWorkload
-    metadata:
-      name: {{ .Release.Name }}-cb-workload
-      labels:
-        app: helm-meta
-        version: v1
+    apiVersion: apps/v1
+    kind: Deployment
     spec:
-      deploymentTemplate:
+      selector:
+        matchLabels:
+          {{- include "var.selectorLabels" . | nindent 8 }}
+      replicas: {{ .Values.replicaCount }}
+      template:
         metadata:
-          name: {{ .Release.Name }}-cb-deployment
-        podSpec:
+          labels:
+            {{- include "var.selectorLabels" . | nindent 10 }}
+        spec:
           containers:
-            - name: {{ .Release.Name }}-cb-container
+            - name: app
               image: {{ .Values.image.repository }}
-              imagePullPolicy: Always
               ports:
-                - containerPort: {{ .Values.service.port }}
-                  name: http
-                  #imagePullSecrets:
-                  #- name: docker-secret
+                - containerPort: 8978
+                  name: cloudbeaver
+              volumeMounts:
+                - name: storagebv
+                  mountPath: /opt/cloudbeaver/workspace
+              imagePullPolicy: IfNotPresent
+          volumes:
+            - name: storagebv
+              persistentVolumeClaim:
+                claimName: cloudbeaver-pvc
+  parameters:
+    - name: replicaCount
+      description: Number of replicas for the deployment
+      type: integer
+      default: 1
+    - name: image
+      description: Docker image to use for the container
+      type: object
+      properties:
+        repository:
+          type: string
+          default: {{ .Values.image.repository }}
+      default:
+        repository: {{ .Values.image.repository }}
+    - name: pvc
+      description: Persistent volume claim for the deployment
+      type: object
+      properties:
+        name:
+          type: string
+          default: cloudbeaver-pvc
+        accessModes:
+          type: array
+          items:
+            type: string
+          default:
+            - ReadWriteOnce
+        resources:
+          type: object
+          properties:
+            requests:
+              type: object
+              properties:
+                storage:
+                  type: string
+                  default: 10Gi
+          default:
+            requests:
+              storage: 10Gi
