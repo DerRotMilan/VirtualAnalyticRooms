@@ -4,7 +4,7 @@ metadata:
   name:  {{ include "var.fullname" . }}-cloudbeaver
   annotations:
     var/component: cloudbeaver
-    var/name: raddauerzaehlstellen
+    var/name: raddauerzaehlstellen1a
     var/shortdesc: 'Anwendungs-Stack mit Datenbank, Analysedaten und Analysewerkzeug,
       hier: Fahrrad-Durchlaufzahlen'
   creationTimestamp: "2022-11-03T20:59:10Z"
