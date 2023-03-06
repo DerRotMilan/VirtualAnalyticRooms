@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: db
-          image: fra.ocir.io/frul1g8cgfam/mri_oml4pydb:latest
+          image: docker.io/ilfur/oml4pydb:latest
           ports:
             - containerPort: 1521
               name: dblistener
