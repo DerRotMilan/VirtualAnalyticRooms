@@ -4,7 +4,7 @@ metadata:
   name:  {{ include "var.fullname" . }}-jupyter
   annotations:
     var/component: jupyter notebook
-    var/name: raddauerzaehlstellen1a
+    var/name: raddauerzaehlstellen
     var/shortdesc: 'Anwendungs-Stack mit Datenbank, Analysedaten und Analysewerkzeug,
       hier: Fahrrad-Durchlaufzahlen'
   creationTimestamp: "2022-11-03T20:59:10Z"

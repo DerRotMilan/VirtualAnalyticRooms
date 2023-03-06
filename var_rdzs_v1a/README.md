@@ -6,7 +6,6 @@ This script will install an Oracle Database 21c in a container und prepare it fo
 It will also load csv files as well as masked demo data for analysis into that database.
 A Jupyter Notebook in a separate container can connect to this database for analysis. Notebooks can be created and saved/persisted. A sample Notebook for analyzing the data "Radlaufstellen" is also installed.
 With CloudBeaver, you may browse the database, query tables and views and make changes to the schema.
-There is also an Analytics application, covering sustainability
 # Intention
 This demonstrates how to create a full analysis environment dynamically, including data, users and access privileges, linking an analysis tool to the pre-populated database and offering a sample analysis in one full stack. All components can be monitored and maintained with kubernetes or Oracle Verrazzano.
 
