@@ -54,6 +54,6 @@ spec:
       volumes:
         - name: scripts
           persistentVolumeClaim:
-            name:  dbhelper-pvc
+            claimName:  dbhelper-pvc
 
 
