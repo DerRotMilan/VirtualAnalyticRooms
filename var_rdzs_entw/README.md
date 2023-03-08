@@ -17,3 +17,4 @@ The same applies to CloudBeaver.
 # Version Notes
 - OAS Service YAML integriert
 - Korrekturen Jupyter Notebook
+- Umzug auf DerRotMilan GitHub
