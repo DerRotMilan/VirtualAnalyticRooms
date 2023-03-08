@@ -51,9 +51,3 @@ spec:
                 secretKeyRef:
                   name: {{ include "var.fullname" . }}-secret
                   key: DB_PASSWORD
-      volumes:
-        - name: scripts
-          persistentVolumeClaim:
-            claimName:  dbhelper-pvc
-
-
