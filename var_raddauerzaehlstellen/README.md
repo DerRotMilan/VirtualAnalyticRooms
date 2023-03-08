@@ -9,7 +9,10 @@ With CloudBeaver, you may browse the database, query tables and views and make c
 # Intention
 This demonstrates how to create a full analysis environment dynamically, including data, users and access privileges, linking an analysis tool to the pre-populated database and offering a sample analysis in one full stack. All components can be monitored and maintained with kubernetes or Oracle Verrazzano.
 
-# Additional Notes
+# Additional Comments
 To connect to the notebook, check for the IP address of the notebook's kubernetes service and port 8889. When connecting to that IP address with a browser, a login token is being asked for the first login. The notebook log in kubernetes shows the login token required for the first access.
 
 The same applies to CloudBeaver.
+
+# Version Notes
+- OAS Service YAML integriert

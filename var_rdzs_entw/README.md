@@ -15,4 +15,5 @@ To connect to the notebook, check for the IP address of the notebook's kubernete
 The same applies to CloudBeaver.
 
 # Version Notes
-Oracle Analytics Service integrated in Chart (no manual creation required anymore)
+- OAS Service YAML integriert
+- Korrekturen Jupyter Notebook
