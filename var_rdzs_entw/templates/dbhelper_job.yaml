@@ -54,6 +54,6 @@ spec:
       volumes:
         - name: scripts
           configMap:
-            name:  {{ include "var.fullname" . }}-scripts-config
+            name:  dbhelper-pvc
 
 
