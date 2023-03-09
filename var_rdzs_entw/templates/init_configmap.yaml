@@ -41,18 +41,18 @@ data:
       @/scripts/dbhelper-04-create_trigger_raddauerzaehlstellen.sql \n
       EOF\n"
     InitSchema-02.sh: 
-     "curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_01_15min.csv -o /scripts/rad_2022_01_15min.csv \n
-      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_02_15min.csv -o /scripts/rad_2022_02_15min.csv \n
-      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_03_15min.csv -o /scripts/rad_2022_03_15min.csv \n
-      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_04_15min.csv -o /scripts/rad_2022_04_15min.csv \n
-      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_05_15min.csv -o /scripts/rad_2022_05_15min.csv \n
-      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_06_15min.csv -o /scripts/rad_2022_06_15min.csv \n
-      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_07_15min.csv -o /scripts/rad_2022_07_15min.csv \n
+     "curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_01_15min.csv -o /dataloads/rad_2022_01_15min.csv \n
+      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_02_15min.csv -o /dataloads/rad_2022_02_15min.csv \n
+      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_03_15min.csv -o /dataloads/rad_2022_03_15min.csv \n
+      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_04_15min.csv -o /dataloads/rad_2022_04_15min.csv \n
+      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_05_15min.csv -o /dataloads/rad_2022_05_15min.csv \n
+      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_06_15min.csv -o /dataloads/rad_2022_06_15min.csv \n
+      curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_07_15min.csv -o /dataloads/rad_2022_07_15min.csv \n
       cd /scripts \n
       /usr/lib/oracle/21/client64/bin/sqlldr oml4pyuser/oml4pypwd@//{{ .Values.database.hostname }}/ORCLPDB1:1521 control=/scripts/dbhelper-05-load-raddauerzaehlstellen.ctl\n"
     InitSchema-03.sh: 
-     "curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/masked_data.DMP -o /scripts/masked_data.DMP \n
-      ls -l /scripts > /scripts/dir.txt \n
+     "curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/masked_data.DMP -o /dataloads/masked_data.DMP \n
+      ls -l /dataloads > /dataloads/dir.txt \n
       /usr/lib/oracle/21/client64/bin/impdp oml4pyuser/oml4pypwd@//{{ .Values.database.hostname }}/ORCLPDB1:1521 DIRECTORY=DPDIR DUMPFILE=masked_data.DMP TABLES=oml4pyuser.raddauerzaehlstellen REMAP_TABLE=oml4pyuser.raddauerzaehlstellen:raddauerzaehlstellen_m \n"
     InitSchema-04.sh: 
      "/opt/oracle/sqlcl/bin/sql sys/\"$DB_PASSWORD\"@{{ .Values.database.hostname }}/ORCLPDB1:1521 as sysdba << EOF \n
@@ -74,7 +74,7 @@ data:
       CREATE TABLESPACE TBS_DMS DATAFILE '/opt/oracle/oradata/ORCLCDB/ORCLPDB1/TBS_DMS.dat' SIZE 10M AUTOEXTEND ON; \n
       ALTER USER oml4pyuser QUOTA UNLIMITED ON TBS_DMS; \n
       DROP DIRECTORY DPDIR; \n
-      CREATE OR REPLACE DIRECTORY DPDIR as '/scripts'; \n
+      CREATE OR REPLACE DIRECTORY DPDIR as '/dataloads'; \n
       GRANT read, write ON DIRECTORY DPDIR to oml4pyuser; \n
       GRANT UNLIMITED TABLESPACE TO oml4pyuser; \n
       GRANT CREATE SESSION TO oml4pyuser; \n
@@ -146,13 +146,7 @@ data:
       , READSIZE=2000000000 \n
       ) \n
       load data \n
-      infile '/scripts/rad_2022_01_15min.csv' \n
-      infile '/scripts/rad_2022_02_15min.csv' \n
-      infile '/scripts/rad_2022_03_15min.csv' \n
-      infile '/scripts/rad_2022_04_15min.csv' \n
-      infile '/scripts/rad_2022_05_15min.csv' \n
-      infile '/scripts/rad_2022_06_15min.csv' \n
-      infile '/scripts/rad_2022_07_15min.csv' \n
+      infile '/dataloads/rad_2022_*_15min.csv' \n
       into table oml4pyuser.raddauerzaehlstellen \n
       fields terminated by \",\" \n
       ( DATUM \n

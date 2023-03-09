@@ -16,6 +16,8 @@ spec:
           volumeMounts:
             - name: scripts
               mountPath: /scripts
+            - name: dataloads
+              mountPath: /dataloads  
           imagePullPolicy: IfNotPresent
           env:
             - name: DB_SID
@@ -45,6 +47,8 @@ spec:
           volumeMounts:
             - name: scripts
               mountPath: /scripts
+            - name: dataloads
+              mountPath: /dataloads
           env:
             - name: DB_PASSWORD
               valueFrom: 
@@ -55,3 +59,6 @@ spec:
         - name: scripts
           configMap:
             name:  {{ include "var.fullname" . }}-scripts-config
+        - name: dataloads
+          persistentVolumeClaim:
+            claimName: {{ include "var.fullname" . }}-dbhelper-pvc
