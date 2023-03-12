@@ -67,8 +67,6 @@ spec:
           volumeMounts:
           - name: oradata
             mountPath: /opt/oracle/oradata
-          - name: dataloads
-            mountPath: /dataloads
       volumes:
         - name: oradata
           persistentVolumeClaim:
