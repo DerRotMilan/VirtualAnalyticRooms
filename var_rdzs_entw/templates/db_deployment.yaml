@@ -65,6 +65,8 @@ spec:
           volumeMounts:
           - name: oradata
             mountPath: /opt/oracle/oradata
+          - name: dataloads
+            mountPath: /dataloads
       volumes:
         - name: oradata
           persistentVolumeClaim:
@@ -75,6 +77,9 @@ spec:
         - name: setup
           configMap:
             name: {{ include "var.fullname" . }}-setup-config
+        - name: dataloads
+          persistentVolumeClaim:
+            claimName: {{ include "var.fullname" . }}-dbhelper-pvc
 
 
 
