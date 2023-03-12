@@ -30,6 +30,8 @@ spec:
               mountPath: /scripts
             - name: setup
               mountPath: /opt/oracle/scripts/setup
+            - name: dataloads
+              mountPath: /dataloads
           imagePullPolicy: Always
           env:
             - name: DB_SID
