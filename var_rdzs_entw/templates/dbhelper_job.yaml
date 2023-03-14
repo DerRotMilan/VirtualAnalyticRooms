@@ -43,7 +43,7 @@ spec:
       initContainers:
         - name: dbcheck
           image: docker.io/ilfur/oml4pydbhelper:latest
-          command: [ "/bin/bash", "/scripts/testconn.sh" ]
+          command: [ "/bin/bash", "/scripts/testconn.sh", "chmod 777 -R /dataloads" ]
           volumeMounts:
             - name: scripts
               mountPath: /scripts
