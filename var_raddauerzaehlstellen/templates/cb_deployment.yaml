@@ -24,12 +24,14 @@ spec:
             - name: storagebv
               mountPath: /opt/cloudbeaver/workspace
           imagePullPolicy: IfNotPresent
+      initContainers:
+        - name: volume-mount-permissions
+          image: busybox
+          command: ["/bin/bash" , "-c" , "curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/credentials-config.json -o /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/credentials-config.json && curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/data-sources.json -o /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json" ]
+          volumeMounts:
+          - name: storagebv
+            mountPath: /opt/cloudbeaver/workspace
       volumes:
         - name: storagebv
           persistentVolumeClaim:
             claimName: cloudbeaver-pvc
-
-
-
-
-
