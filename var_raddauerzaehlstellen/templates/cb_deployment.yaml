@@ -24,13 +24,6 @@ spec:
             - name: storagebv
               mountPath: /opt/cloudbeaver/workspace
           imagePullPolicy: IfNotPresent
-      initContainers:
-        - name: volume-mount-permissions
-          image: busybox
-          command: ["/bin/bash" , "-c" , "ls" ]
-          volumeMounts:
-          - name: storagebv
-            mountPath: /opt/cloudbeaver/workspace
       volumes:
         - name: storagebv
           persistentVolumeClaim:
