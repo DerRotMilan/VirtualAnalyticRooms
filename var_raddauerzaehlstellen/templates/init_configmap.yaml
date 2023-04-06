@@ -220,6 +220,9 @@ data:
       CREATE OR REPLACE EDITIONABLE SYNONYM ds1.s_raddauerzaehlstellen_d
       FOR oml4pyuser.v_raddauerzaehlstellen_d
       ;
+      CREATE OR REPLACE VIEW ds1.v_raddauerzaehlstellen_d
+      AS SELECT * FROM oml4pyuser.v_raddauerzaehlstellen_d
+      ;
     dbhelper-08b-create_synonym_raddauerzaehlstellen_v.sql: |
       CREATE OR REPLACE EDITIONABLE SYNONYM oml4pyuser.s_raddauerzaehlstellen_v
       FOR oml4pyuser.v_raddauerzaehlstellen_v
@@ -230,9 +233,18 @@ data:
       CREATE OR REPLACE EDITIONABLE SYNONYM ds2.s_raddauerzaehlstellen_v
       FOR oml4pyuser.v_raddauerzaehlstellen_v
       ;
+      CREATE OR REPLACE VIEW ds1.v_raddauerzaehlstellen_v
+      AS SELECT * FROM oml4pyuser.v_raddauerzaehlstellen_v
+      ;
+      CREATE OR REPLACE VIEW ds2.v_raddauerzaehlstellen_v
+      AS SELECT * FROM oml4pyuser.v_raddauerzaehlstellen_v
+      ;
     dbhelper-08c-create_synonym_raddauerzaehlstellen_m.sql: |-
       CREATE OR REPLACE EDITIONABLE SYNONYM ds2.s_raddauerzaehlstellen_m
       FOR oml4pyuser.raddauerzaehlstellen_m
+      ;
+      CREATE OR REPLACE VIEW ds2.v_raddauerzaehlstellen_m
+      AS SELECT * FROM oml4pyuser.raddauerzaehlstellen_m
       ;
     oml4pysrvinit.sql: 
      "#./sql sys/\"$DB_PASSWORD\"@localhost:1521:orclcdb as sysdba \n
