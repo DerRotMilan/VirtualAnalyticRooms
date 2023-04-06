@@ -1,22 +1,23 @@
+{{- if eq .Values.verrazzanodeployment "false" }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  {{ include "var.fullname" . }}
+  name:  {{ include "var.fullname" . }}-cloudbeaver
   labels:
     {{- include "var.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
             {{- include "var.selectorLabels" . | nindent 6 }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   template:
     metadata:
       labels:
         {{- include "var.selectorLabels" . | nindent 8 }}
     spec:
       containers:
-        - name: app
-          image: {{ .Values.image.repository }}
+        - name: cloudbeaver
+          image: "docker.io/dbeaver/cloudbeaver"
           ports:
             - containerPort: 8978
               name: cloudbeaver
@@ -27,4 +28,42 @@ spec:
       volumes:
         - name: storagebv
           persistentVolumeClaim:
-            claimName: cloudbeaver-pvc
+            claimName:  {{ include "var.fullname" . }}-cloudbeaver-pvc
+{{- else }}
+apiVersion: core.oam.dev/v1alpha2
+kind: Component
+metadata:
+  name: {{ include "var.fullname" . }}-cloudbeaver-comp
+spec:
+  workload:
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name:  {{ include "var.fullname" . }}-cloudbeaver
+      labels:
+        {{- include "var.labels" . | nindent 4 }}
+    spec:
+      selector:
+        matchLabels:
+                {{- include "var.selectorLabels" . | nindent 6 }}
+      replicas: 1
+      template:
+        metadata:
+          labels:
+            {{- include "var.selectorLabels" . | nindent 8 }}
+        spec:
+          containers:
+            - name: cloudbeaver
+              image: "docker.io/dbeaver/cloudbeaver"
+              ports:
+                - containerPort: 8978
+                  name: cloudbeaver
+              volumeMounts:
+                - name: storagebv
+                  mountPath: /opt/cloudbeaver/workspace
+              imagePullPolicy: IfNotPresent
+          volumes:
+            - name: storagebv
+              persistentVolumeClaim:
+                claimName:  {{ include "var.fullname" . }}-cloudbeaver-pvc
+{{- end }}

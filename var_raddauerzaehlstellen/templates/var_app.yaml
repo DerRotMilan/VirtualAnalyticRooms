@@ -1,0 +1,38 @@
+{{- if eq .Values.verrazzanodeployment "true" }}
+apiVersion: core.oam.dev/v1alpha2
+kind: ApplicationConfiguration
+metadata:
+  name: edge-appconf
+  annotations:
+    version: v1.0.0
+    description: "lupus poc edge application"
+spec:
+  components:
+    - componentName: {{ include "var.fullname" . }}-notebooks-pvc-comp
+    - componentName: {{ include "var.fullname" . }}-cloudbeaver-pvc-comp
+    - componentName: {{ include "var.fullname" . }}-jupyter-comp
+      traits:
+        - trait:
+            apiVersion: oam.verrazzano.io/v1alpha1
+            kind: IngressTrait
+            metadata:
+              name: {{ include "var.fullname" . }}-jupyter-ingress
+            spec:
+              rules:
+                - paths:
+                    - path: "/"
+                      pathType: Prefix
+    - componentName: {{ include "var.fullname" . }}-cloudbeaver-comp
+      traits:
+        - trait:
+            apiVersion: oam.verrazzano.io/v1alpha1
+            kind: IngressTrait
+            metadata:
+              name: {{ include "var.fullname" . }}-cloudbeaver-ingress
+            spec:
+              rules:
+                - paths:
+                    - path: "/"
+                      pathType: Prefix
+{{- end }}
+

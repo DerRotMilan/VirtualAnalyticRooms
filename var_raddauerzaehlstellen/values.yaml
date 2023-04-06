@@ -1,9 +1,3 @@
-replicaCount: 1
-
-image:
-  repository: "docker.io/dbeaver/cloudbeaver"
-  pullPolicy: IfNotPresent
-
 service:
   type: LoadBalancer
   port: 8080
@@ -11,3 +5,5 @@ service:
 database:
   hostname: oml4pydb-service
   initialpwd: oml4pypwd
+
+verrazzanodeployment: "true"
