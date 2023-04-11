@@ -8,7 +8,6 @@ metadata:
     description: "Virtual Analytical Room Raddauerzaehlstellen"
 spec:
   components:
-    - componentName: {{ include "var.fullname" . }}-cloudbeaver-pvc-comp
     - componentName: {{ include "var.fullname" . }}-cloudbeaver-comp
       traits:
         - trait:
@@ -33,7 +32,6 @@ metadata:
     description: "Virtual Analytical Room Raddauerzaehlstellen"
 spec:
   components:
-    - componentName: {{ include "var.fullname" . }}-notebooks-pvc-comp
     - componentName: {{ include "var.fullname" . }}-jupyter-comp
       traits:
         - trait:
