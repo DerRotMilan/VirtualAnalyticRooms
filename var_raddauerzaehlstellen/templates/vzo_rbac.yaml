@@ -7,7 +7,7 @@ rules:
   - apiGroups: [""]
     resources:
     - secrets
-    - pvc
+    - persistentvolumeclaims
     verbs: 
     - create
     - delete
