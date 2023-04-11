@@ -9,7 +9,6 @@ spec:
   selector:
     matchLabels:
             {{- include "var.selectorLabels" . | nindent 6 }}
-  replicas: 1
   template:
     metadata:
       labels:
@@ -46,7 +45,6 @@ spec:
       selector:
         matchLabels:
                 {{- include "var.selectorLabels" . | nindent 6 }}
-      replicas: 1
       template:
         metadata:
           labels:
@@ -58,12 +56,5 @@ spec:
               ports:
                 - containerPort: 8978
                   name: cloudbeaver
-              volumeMounts:
-                - name: storagebv
-                  mountPath: /opt/cloudbeaver/workspace
               imagePullPolicy: IfNotPresent
-          volumes:
-            - name: storagebv
-              persistentVolumeClaim:
-                claimName:  {{ include "var.fullname" . }}-cloudbeaver-pvc
 {{- end }}
