@@ -2,28 +2,13 @@
 apiVersion: core.oam.dev/v1alpha2
 kind: ApplicationConfiguration
 metadata:
-  name: {{ include "var.fullname" . }}-appconf
+  name: {{ include "var.fullname" . }}-cloudbeaver
   annotations:
     version: v1.0.0
     description: "Virtual Analytical Room Raddauerzaehlstellen"
 spec:
   components:
-    - componentName: {{ include "var.fullname" . }}-jupyter-comp
-      traits:
-        - trait:
-            apiVersion: oam.verrazzano.io/v1alpha1
-            kind: IngressTrait
-            metadata:
-              name: {{ include "var.fullname" . }}-jupyter-ingress
-            spec:
-              rules:
-                - paths:
-                    - path: "/jup/"
-                      pathType: Prefix
-                    - path: "/"
-                      pathType: Prefix
-                - destination:
-                    port: 8889
+    - componentName: {{ include "var.fullname" . }}-cloudbeaver-pvc-comp
     - componentName: {{ include "var.fullname" . }}-cloudbeaver-comp
       traits:
         - trait:
@@ -34,9 +19,34 @@ spec:
             spec:
               rules:
                 - paths:
-                    - path: "/cb/"
+                    - path: "/"
                       pathType: Prefix
                 - destination:
                     port: 8978
+---
+apiVersion: core.oam.dev/v1alpha2
+kind: ApplicationConfiguration
+metadata:
+  name: {{ include "var.fullname" . }}-jupyter
+  annotations:
+    version: v1.0.0
+    description: "Virtual Analytical Room Raddauerzaehlstellen"
+spec:
+  components:
+    - componentName: {{ include "var.fullname" . }}-notebooks-pvc-comp
+    - componentName: {{ include "var.fullname" . }}-jupyter-comp
+      traits:
+        - trait:
+            apiVersion: oam.verrazzano.io/v1alpha1
+            kind: IngressTrait
+            metadata:
+              name: {{ include "var.fullname" . }}-jupyter-ingress
+            spec:
+              rules:
+                - paths:
+                    - path: "/"
+                      pathType: Prefix
+                - destination:
+                    port: 8889
 {{- end }}
 
