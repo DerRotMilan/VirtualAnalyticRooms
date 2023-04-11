@@ -67,21 +67,6 @@ spec:
               ports:
                 - containerPort: 8889
                   name: jupyter
-              volumeMounts:
-                - name: notebooks
-                  mountPath: /notebooks
               imagePullPolicy: IfNotPresent
-          initContainers:
-            - name: volume-mount-permissions
-              image: docker.io/ilfur/oml4pyuc:latest
-              command: ["/bin/bash" , "-c" , "curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/requirements.txt -o /notebooks/requirements.txt && curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/requirements-remove.txt -o /notebooks/requirements-remove.txt && curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/VAR.ipynb -o /notebooks/VAR.ipynb && sed -i 's/YOURHOSTNAME/oml4pydb-service/' /notebooks/VAR.ipynb && chmod -R 777 /notebooks" ]
-              volumeMounts:
-              - name: notebooks
-                mountPath: /notebooks
-          volumes:
-            - name: notebooks
-              persistentVolumeClaim:
-                claimName: {{ include "var.fullname" . }}-notebooks-pvc
-
 {{- end }}
 
