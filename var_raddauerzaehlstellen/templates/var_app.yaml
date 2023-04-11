@@ -1,4 +1,4 @@
-{{- if eq .Values.verrazzanodeployment "true" }}
+{{- if eq .Values.verrazzanodeployment true }}
 apiVersion: core.oam.dev/v1alpha2
 kind: ApplicationConfiguration
 metadata:
@@ -20,10 +20,12 @@ spec:
             spec:
               rules:
                 - paths:
+                    - path: "/jup/"
+                      pathType: Prefix
                     - path: "/"
                       pathType: Prefix
-                destination:
-                  port: 8889
+                - destination:
+                    port: 8889
     - componentName: {{ include "var.fullname" . }}-cloudbeaver-comp
       traits:
         - trait:
@@ -34,9 +36,9 @@ spec:
             spec:
               rules:
                 - paths:
-                    - path: "/"
+                    - path: "/cb/"
                       pathType: Prefix
-                destination:
-                  port: 8978
+                - destination:
+                    port: 8978
 {{- end }}
 
