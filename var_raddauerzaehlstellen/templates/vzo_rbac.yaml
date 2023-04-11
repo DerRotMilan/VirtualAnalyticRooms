@@ -28,4 +28,7 @@ subjects:
   - kind: ServiceAccount
     name: oam-kubernetes-runtime
     namespace: verrazzano-system
+  - kind: ServiceAccount
+    name: verrazzano-application-operator
+    namespace: verrazzano-system
 {{- end }}
