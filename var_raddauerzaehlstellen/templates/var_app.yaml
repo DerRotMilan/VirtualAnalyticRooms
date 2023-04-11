@@ -2,10 +2,10 @@
 apiVersion: core.oam.dev/v1alpha2
 kind: ApplicationConfiguration
 metadata:
-  name: edge-appconf
+  name: {{ include "var.fullname" . }}-appconf
   annotations:
     version: v1.0.0
-    description: "lupus poc edge application"
+    description: "Virtual Analytical Room Raddauerzaehlstellen"
 spec:
   components:
     - componentName: {{ include "var.fullname" . }}-notebooks-pvc-comp
@@ -22,6 +22,8 @@ spec:
                 - paths:
                     - path: "/"
                       pathType: Prefix
+                destination:
+                  port: 8889
     - componentName: {{ include "var.fullname" . }}-cloudbeaver-comp
       traits:
         - trait:
@@ -34,5 +36,7 @@ spec:
                 - paths:
                     - path: "/"
                       pathType: Prefix
+                destination:
+                  port: 8978
 {{- end }}
 
