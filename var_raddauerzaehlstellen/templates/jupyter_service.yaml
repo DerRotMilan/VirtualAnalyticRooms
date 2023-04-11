@@ -1,4 +1,4 @@
-{{- if eq .Values.verrazzanodeployment "false" }}
+{{- if eq .Values.verrazzanodeployment false }}
 apiVersion: v1
 kind: Service
 metadata:

@@ -1,4 +1,4 @@
-{{- if eq .Values.verrazzanodeployment "false" }}
+{{- if eq .Values.verrazzanodeployment false }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -13,7 +13,7 @@ spec:
   selector:
       {{- include "var.selectorLabels" . | nindent 6 }}
   ports:
-    - port: {{ .Values.service.port }}
+    - port: 8080
       targetPort: 8978
-  type: {{ .Values.service.type }}
+  type: LoadBalancer
 {{- end }}
