@@ -21,13 +21,13 @@ spec:
                 kubernetes.io/ingress.class: istio
               spec:
                 rules:
-                  - host: {{ .Release.Name }}-cloudbeaver.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
-                    http:
-                      paths:
-                        - path: "/"
-                          backend:
-                            serviceName: {{ include "var.fullname" . }}-cloudbeaver
-                            servicePort: 8978
+                - host: {{ .Release.Name }}-cloudbeaver.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
+                  http:
+                    paths:
+                    - path: "/"
+                      backend:
+                        serviceName: {{ include "var.fullname" . }}-cloudbeaver
+                        servicePort: 8978
 ---
 apiVersion: core.oam.dev/v1alpha2
 kind: ApplicationConfiguration
@@ -51,12 +51,12 @@ spec:
                 kubernetes.io/ingress.class: istio
               spec:
                 rules:
-                  - host: {{ .Release.Name }}-jupyter.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
-                    http:
-                      paths:
-                        - path: "/"
-                          backend: 
-                            serviceName: {{ include "var.fullname" . }}-jupyter
-                            servicePort: 8889
+                - host: {{ .Release.Name }}-jupyter.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
+                  http:
+                    paths:
+                    - path: "/"
+                        backend: 
+                          serviceName: {{ include "var.fullname" . }}-jupyter
+                          servicePort: 8889
 {{- end }}
 
