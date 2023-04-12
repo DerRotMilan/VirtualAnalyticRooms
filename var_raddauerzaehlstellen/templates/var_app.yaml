@@ -1,4 +1,4 @@
-{{- if eq .Values.verrazzanodeployment true }}
+{{- if eq .Values.verrazzano.OAMdeploy true }}
 apiVersion: core.oam.dev/v1alpha2
 kind: ApplicationConfiguration
 metadata:
@@ -8,18 +8,26 @@ metadata:
     description: "Virtual Analytical Room Raddauerzaehlstellen"
 spec:
   components:
+    - componentName: {{ include "var.fullname" . }}-cloudbeaver-pvc-comp
+    - componentName: {{ include "var.fullname" . }}-cloudbeaver-svc-comp
     - componentName: {{ include "var.fullname" . }}-cloudbeaver-comp
       traits:
         - trait:
-            apiVersion: oam.verrazzano.io/v1alpha1
-            kind: IngressTrait
+            apiVersion: networking.k8s.io/v1beta1
+            kind: Ingress
             metadata:
               name: {{ include "var.fullname" . }}-cloudbeaver-ingress
-            spec:
-              rules:
-                - paths:
-                    - path: "/"
-                      pathType: Prefix
+              annotations:
+                kubernetes.io/ingress.class: istio
+              spec:
+                rules:
+                  - host: {{ .Release.Name }}-cloudbeaver.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
+                    http:
+                      paths:
+                        - path: "/"
+                          backend:
+                            serviceName: {{ include "var.fullname" . }}-cloudbeaver
+                            servicePort: 8978
 ---
 apiVersion: core.oam.dev/v1alpha2
 kind: ApplicationConfiguration
@@ -30,17 +38,25 @@ metadata:
     description: "Virtual Analytical Room Raddauerzaehlstellen"
 spec:
   components:
+    - componentName: {{ include "var.fullname" . }}-jupyter-pvc-comp
+    - componentName: {{ include "var.fullname" . }}-jupyter-svc-comp
     - componentName: {{ include "var.fullname" . }}-jupyter-comp
       traits:
         - trait:
-            apiVersion: oam.verrazzano.io/v1alpha1
-            kind: IngressTrait
+            apiVersion: networking.k8s.io/v1beta1
+            kind: Ingress
             metadata:
               name: {{ include "var.fullname" . }}-jupyter-ingress
-            spec:
-              rules:
-                - paths:
-                    - path: "/"
-                      pathType: Prefix
+              annotations:
+                kubernetes.io/ingress.class: istio
+              spec:
+                rules:
+                  - host: {{ .Release.Name }}-jupyter.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
+                    http:
+                      paths:
+                        - path: "/"
+                          backend: 
+                            serviceName: {{ include "var.fullname" . }}-jupyter
+                            servicePort: 8889
 {{- end }}
 
