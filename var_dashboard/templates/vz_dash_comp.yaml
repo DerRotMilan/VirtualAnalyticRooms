@@ -19,7 +19,7 @@ spec:
         podSpec:
           containers:
             - name: {{ .Release.Name }}-dash-container
-              image: docker.io/ilfur/var_dashboard:1.0
+              image: fra.ocir.io/frul1g8cgfam/pub_var_dashboard:1.0
               imagePullPolicy: Always
               ports:
                 - containerPort: 8080

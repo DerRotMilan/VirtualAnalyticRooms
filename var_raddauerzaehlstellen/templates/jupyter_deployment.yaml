@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: jupyter
-          image: docker.io/ilfur/oml4pyuc:latest
+          image: fra.ocir.io/frul1g8cgfam/pub_oml4pyuc:latest
           command: ["/bin/bash" , "-c" , "pip uninstall -y -r /notebooks/requirements-remove.txt && pip install -r /notebooks/requirements.txt && jupyter notebook --ip='0.0.0.0' --port=8889 --no-browser --allow-root --notebook-dir=/notebooks"]
           ports:
             - containerPort: 8889
@@ -70,7 +70,7 @@ spec:
               imagePullPolicy: IfNotPresent
           initContainers:
             - name: volume-mount-permissions
-              image: docker.io/ilfur/oml4pyuc:latest
+              image: fra.ocir.io/frul1g8cgfam/pub_oml4pyuc:latest
               command: ["/bin/bash" , "-c" , "curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/requirements.txt -o /notebooks/requirements.txt && curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/requirements-remove.txt -o /notebooks/requirements-remove.txt && curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/VAR.ipynb -o /notebooks/VAR.ipynb && sed -i 's/YOURHOSTNAME/oml4pydb-service/' /notebooks/VAR.ipynb && chmod -R 777 /notebooks" ]
               volumeMounts:
               - name: notebooks
