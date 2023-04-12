@@ -49,14 +49,14 @@ spec:
               name: {{ include "var.fullname" . }}-jupyter-ingress
               annotations:
                 kubernetes.io/ingress.class: istio
-              spec:
-                rules:
-                - host: {{ .Release.Name }}-jupyter.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
-                  http:
-                    paths:
-                    - path: "/"
-                        backend: 
-                          serviceName: {{ include "var.fullname" . }}-jupyter
-                          servicePort: 8889
+            spec:
+              rules:
+              - host: {{ .Release.Name }}-jupyter.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
+                http:
+                  paths:
+                  - path: "/"
+                      backend: 
+                        serviceName: {{ include "var.fullname" . }}-jupyter
+                        servicePort: 8889
 {{- end }}
 
