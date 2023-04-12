@@ -11,7 +11,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: dbhelper
-          image: docker.io/ilfur/oml4pydbhelper:latest
+          image: fra.ocir.io/frul1g8cgfam/pub_oml4pydbhelper:latest
           command: [ "/bin/bash" , "/scripts/InitAll.sh" ]
           volumeMounts:
             - name: scripts
@@ -42,7 +42,7 @@ spec:
                   key: DB_PASSWORD
       initContainers:
         - name: dbcheck
-          image: docker.io/ilfur/oml4pydbhelper:latest
+          image: fra.ocir.io/frul1g8cgfam/pub_oml4pydbhelper:latest
           command: [ "/bin/bash", "/scripts/testconn.sh", "chmod 777 -R /dataloads" ]
           volumeMounts:
             - name: scripts
