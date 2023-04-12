@@ -19,15 +19,15 @@ spec:
               name: {{ include "var.fullname" . }}-cloudbeaver-ingress
               annotations:
                 kubernetes.io/ingress.class: istio
-              spec:
-                rules:
-                - host: {{ .Release.Name }}-cloudbeaver.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
-                  http:
-                    paths:
-                    - path: "/"
-                      backend:
-                        serviceName: {{ include "var.fullname" . }}-cloudbeaver
-                        servicePort: 8978
+            spec:
+              rules:
+              - host: {{ .Release.Name }}-cloudbeaver.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
+                http:
+                  paths:
+                  - path: "/"
+                    backend:
+                      serviceName: {{ include "var.fullname" . }}-cloudbeaver
+                      servicePort: 8978
 ---
 apiVersion: core.oam.dev/v1alpha2
 kind: ApplicationConfiguration
