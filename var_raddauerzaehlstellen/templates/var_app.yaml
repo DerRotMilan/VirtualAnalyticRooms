@@ -20,8 +20,6 @@ spec:
                 - paths:
                     - path: "/"
                       pathType: Prefix
-                - destination:
-                    port: 8978
 ---
 apiVersion: core.oam.dev/v1alpha2
 kind: ApplicationConfiguration
@@ -44,7 +42,5 @@ spec:
                 - paths:
                     - path: "/"
                       pathType: Prefix
-                - destination:
-                    port: 8889
 {{- end }}
 
