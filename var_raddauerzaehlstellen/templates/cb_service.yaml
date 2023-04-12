@@ -16,28 +16,4 @@ spec:
     - port: 8080
       targetPort: 8978
   type: LoadBalancer
-{{- else }}
-apiVersion: core.oam.dev/v1alpha2
-kind: Component
-metadata:
-  name: {{ include "var.fullname" . }}-cloudbeaver-svc-comp
-spec:
-  workload:
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name:  {{ include "var.fullname" . }}-cloudbeaver
-      annotations:
-        var/url:  "http://{{ .Release.Name }}-cloudbeaver.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}"
-        var/component: cloudbeaver
-        var/name: raddauerzaehlstellen
-        var/shortdesc: 'Anwendungs-Stack mit Datenbank, Analysedaten und Analysewerkzeug,
-          hier: Fahrrad-Durchlaufzahlen'
-      creationTimestamp: "2022-11-03T20:59:10Z"
-    spec:
-      selector:
-      {{- include "var.selectorLabels" . | nindent 10 }}
-      ports:
-        - port: 8080
-          targetPort: 8978
 {{- end }}

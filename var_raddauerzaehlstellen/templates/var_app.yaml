@@ -9,25 +9,18 @@ metadata:
 spec:
   components:
     - componentName: {{ include "var.fullname" . }}-cloudbeaver-pvc-comp
-    - componentName: {{ include "var.fullname" . }}-cloudbeaver-svc-comp
     - componentName: {{ include "var.fullname" . }}-cloudbeaver-comp
       traits:
         - trait:
-            apiVersion: networking.k8s.io/v1
-            kind: Ingress
+            apiVersion: oam.verrazzano.io/v1alpha1
+            kind: IngressTrait
             metadata:
               name: {{ include "var.fullname" . }}-cloudbeaver-ingress
-              annotations:
-                kubernetes.io/ingress.class: istio
             spec:
               rules:
-              - host: {{ .Release.Name }}-cloudbeaver.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
-                http:
-                  paths:
-                  - path: "/"
-                    backend:
-                      serviceName: {{ include "var.fullname" . }}-cloudbeaver
-                      servicePort: 8978
+              - paths:
+                - path: /
+                  pathType: Prefix
 ---
 apiVersion: core.oam.dev/v1alpha2
 kind: ApplicationConfiguration
@@ -41,22 +34,5 @@ spec:
     - componentName: {{ include "var.fullname" . }}-notebooks-pvc-comp
     - componentName: {{ include "var.fullname" . }}-jupyter-svc-comp
     - componentName: {{ include "var.fullname" . }}-jupyter-comp
-      traits:
-        - trait:
-            apiVersion: networking.k8s.io/v1
-            kind: Ingress
-            metadata:
-              name: {{ include "var.fullname" . }}-jupyter-ingress
-              annotations:
-                kubernetes.io/ingress.class: istio
-            spec:
-              rules:
-              - host: {{ .Release.Name }}-jupyter.{{ .Release.Namespace }}.{{ .Values.verrazzano.domainsuffix }}
-                http:
-                  paths:
-                  - path: "/"
-                      backend: 
-                        serviceName: {{ include "var.fullname" . }}-jupyter
-                        servicePort: 8889
 {{- end }}
 
