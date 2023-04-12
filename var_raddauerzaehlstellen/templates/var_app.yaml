@@ -13,7 +13,7 @@ spec:
     - componentName: {{ include "var.fullname" . }}-cloudbeaver-comp
       traits:
         - trait:
-            apiVersion: networking.k8s.io/v1beta1
+            apiVersion: networking.k8s.io/v1
             kind: Ingress
             metadata:
               name: {{ include "var.fullname" . }}-cloudbeaver-ingress
@@ -43,7 +43,7 @@ spec:
     - componentName: {{ include "var.fullname" . }}-jupyter-comp
       traits:
         - trait:
-            apiVersion: networking.k8s.io/v1beta1
+            apiVersion: networking.k8s.io/v1
             kind: Ingress
             metadata:
               name: {{ include "var.fullname" . }}-jupyter-ingress
