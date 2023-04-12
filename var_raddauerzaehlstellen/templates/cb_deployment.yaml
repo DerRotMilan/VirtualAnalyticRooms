@@ -40,15 +40,15 @@ spec:
     metadata:
       name:  {{ include "var.fullname" . }}-cloudbeaver
       labels:
-        {{- include "var.labels" . | nindent 4 }}
+        {{- include "var.labels" . | nindent 8 }}
     spec:
       selector:
         matchLabels:
-                {{- include "var.selectorLabels" . | nindent 6 }}
+          {{- include "var.selectorLabels" . | nindent 10 }}
       template:
         metadata:
           labels:
-            {{- include "var.selectorLabels" . | nindent 8 }}
+            {{- include "var.selectorLabels" . | nindent 12 }}
         spec:
           containers:
             - name: cloudbeaver
@@ -56,5 +56,12 @@ spec:
               ports:
                 - containerPort: 8978
                   name: cloudbeaver
+              volumeMounts:
+                - name: storagebv
+                  mountPath: /opt/cloudbeaver/workspace
               imagePullPolicy: IfNotPresent
+          volumes:
+            - name: storagebv
+              persistentVolumeClaim:
+                claimName:  {{ include "var.fullname" . }}-cloudbeaver-pvc
 {{- end }}
