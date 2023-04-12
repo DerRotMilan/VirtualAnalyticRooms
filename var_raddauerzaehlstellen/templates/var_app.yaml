@@ -32,7 +32,17 @@ metadata:
 spec:
   components:
     - componentName: {{ include "var.fullname" . }}-notebooks-pvc-comp
-    - componentName: {{ include "var.fullname" . }}-jupyter-svc-comp
     - componentName: {{ include "var.fullname" . }}-jupyter-comp
+      traits:
+        - trait:
+            apiVersion: oam.verrazzano.io/v1alpha1
+            kind: IngressTrait
+            metadata:
+              name: {{ include "var.fullname" . }}-jupyter-ingress
+            spec:
+              rules:
+              - paths:
+                - path: /
+                  pathType: Prefix
 {{- end }}
 
