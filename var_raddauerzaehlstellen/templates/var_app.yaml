@@ -6,6 +6,10 @@ metadata:
   annotations:
     version: v1.0.0
     description: "Virtual Analytical Room Raddauerzaehlstellen"
+    var/component: cloudbeaver
+    var/name: raddauerzaehlstellen
+    var/shortdesc: 'Anwendungs-Stack mit Datenbank, Analysedaten und Analysewerkzeug,
+      hier: Fahrrad-Durchlaufzahlen'
 spec:
   components:
     - componentName: {{ include "var.fullname" . }}-cloudbeaver-pvc-comp
@@ -29,6 +33,10 @@ metadata:
   annotations:
     version: v1.0.0
     description: "Virtual Analytical Room Raddauerzaehlstellen"
+    var/component: jupyter
+    var/name: raddauerzaehlstellen
+    var/shortdesc: 'Anwendungs-Stack mit Datenbank, Analysedaten und Analysewerkzeug,
+      hier: Fahrrad-Durchlaufzahlen'
 spec:
   components:
     - componentName: {{ include "var.fullname" . }}-notebooks-pvc-comp
