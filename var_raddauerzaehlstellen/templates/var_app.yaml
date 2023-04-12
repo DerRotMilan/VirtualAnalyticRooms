@@ -38,7 +38,7 @@ metadata:
     description: "Virtual Analytical Room Raddauerzaehlstellen"
 spec:
   components:
-    - componentName: {{ include "var.fullname" . }}-jupyter-pvc-comp
+    - componentName: {{ include "var.fullname" . }}-notebooks-pvc-comp
     - componentName: {{ include "var.fullname" . }}-jupyter-svc-comp
     - componentName: {{ include "var.fullname" . }}-jupyter-comp
       traits:
