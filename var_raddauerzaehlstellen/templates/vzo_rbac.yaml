@@ -4,7 +4,10 @@ kind: ClusterRole
 metadata:
   name: {{ include "var.fullname" . }}-oam-rbac
 rules:
-  - apiGroups: [""]
+  - apiGroups: 
+    - ""
+    - networking.k8s.io
+    - extensions
     resources:
     - secrets
     - persistentvolumeclaims
