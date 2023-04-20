@@ -33,7 +33,7 @@ spec:
             claimName: ords-pvc
         - name: secretords
           secret:
-            name: {{ .Values.ords.secret.secretName }}
+            secretName: {{ .Values.ords.secret.secretName }}
 
 
 
