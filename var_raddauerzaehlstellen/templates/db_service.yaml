@@ -9,9 +9,11 @@ spec:
   ports:
     - port: 1521
       targetPort: 1521
+      appProtocol: tcp
       name: dblistener
     - port: 5500
       targetPort: 5500
+      appProtocol: https
       name: oem
   type: ClusterIP
 
