@@ -44,6 +44,12 @@ rules:
   - apps
   verbs:
   - '*'
+- apiGroups:
+  - networking.istio.io
+  resources:
+  - gateways
+  verbs:
+  - '*'
 ---
 apiVersion: core.oam.dev/v1alpha2
 kind: Component
@@ -66,7 +72,7 @@ spec:
         podSpec:
           containers:
             - name: {{ .Release.Name }}-meta-container
-              image: fra.ocir.io/frul1g8cgfam/pub_helm-meta:1.0
+              image: fra.ocir.io/frul1g8cgfam/pub_helm-meta:1.5
               imagePullPolicy: Always
               ports:
                 - containerPort: 8888
