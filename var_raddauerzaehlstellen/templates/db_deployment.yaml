@@ -16,6 +16,7 @@ spec:
       labels:
         {{- include "var.selectorLabels" . | nindent 8 }}
         component: db
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
         - name: db
