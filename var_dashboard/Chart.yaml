@@ -21,4 +21,4 @@ version: 0.1.0
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 appVersion: 1.0.0
-icon: "https://ilfur.github.io/VirtualAnalyticRooms/var_dashboard/oracledb_icon.png"
+icon: "https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/HomePage.jpg"
