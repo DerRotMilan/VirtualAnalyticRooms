@@ -16,6 +16,7 @@ To connect to the notebook, check for the IP address of the notebook's kubernete
 The same applies to CloudBeaver.
 
 # Version Notes
+- OAM-Umstellung: Einbindung Jupyter/CloudBeaver in Grafana/Kiali 
 - OAS Service YAML integriert
 - Korrekturen Jupyter Notebook
 - Umzug auf DerRotMilan GitHub
