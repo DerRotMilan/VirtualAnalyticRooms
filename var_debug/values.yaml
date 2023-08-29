@@ -1,0 +1,3 @@
+verrazzano:
+  OAMdeploy: true
+  domainsuffix: 141.144.197.116.nip.io
