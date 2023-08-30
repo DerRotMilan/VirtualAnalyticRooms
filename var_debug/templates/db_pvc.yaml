@@ -1,3 +1,4 @@
+{{- if eq .Values.verrazzano.OAMdeploy false }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -8,3 +9,21 @@ spec:
   resources:
     requests:
       storage: 10Gi
+{{- else }}
+apiVersion: core.oam.dev/v1alpha2
+kind: Component
+metadata:
+  name: {{ include "var.fullname" . }}-oradata-pvc-comp
+spec:
+  workload:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: {{ include "var.fullname" . }}-oradata-pvc
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
+{{ end }}
