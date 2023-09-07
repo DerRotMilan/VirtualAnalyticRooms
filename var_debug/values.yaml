@@ -3,4 +3,4 @@ database:
   initialpwd: oml4pypwd
 verrazzano:
   OAMdeploy: true
-  domainsuffix: 129.159.253.206.nip.io
+  domainsuffix: 89.168.64.208.nip.io
