@@ -67,6 +67,7 @@ data:
      "
     dbhelper-01a-create_user_oml4pyuser.sql: 
      "ALTER SESSION SET CONTAINER=orclpdb1; \n
+      create table dummymr1( c number ); \n
       DROP USER oml4pyuser CASCADE; \n
       CREATE USER oml4pyuser IDENTIFIED BY oml4pypwd ; \n
       ALTER USER oml4pyuser DEFAULT TABLESPACE users QUOTA UNLIMITED ON users; \n
