@@ -5,6 +5,7 @@ metadata:
 data:
     01_setPassword.sh: 
      "#!/bin/bash\n
+      touch /opt/oracle/oradata/01_setPassword-started.txt \n
       export DB_PASSWORD=$(cat /opt/oracle/oradata/tmppwd.txt) \n
       sqlplus / AS SYSDBA << EOF \n
       ALTER USER SYS IDENTIFIED BY \"$DB_PASSWORD\"; \n
@@ -17,6 +18,7 @@ data:
      "
     02_setupOML.sh: 
      "#!/bin/bash \n
+      touch /opt/oracle/oradata/02_setupOML-started.txt \n
       export DB_PASSWORD=$(cat /opt/oracle/oradata/tmppwd.txt) \n
       sqlplus sys/$DB_PASSWORD@127.0.0.1/ORCLPDB1:1521 as sysdba << EOF \n
       ALTER PROFILE DEFAULT LIMIT PASSWORD_VERIFY_FUNCTION NULL; \n
@@ -27,6 +29,7 @@ data:
      "
     03_cleanup.sh: 
      "#!/bin/bash \n 
+      touch /opt/oracle/oradata/03_cleanup-started.txt \n
       rm /opt/oracle/oradata/temppwd.txt \n
       touch /opt/oracle/oradata/03_cleanup-finished.txt \n
      "
