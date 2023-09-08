@@ -13,7 +13,7 @@ data:
      ALTER USER PDBADMIN IDENTIFIED BY \"$DB_PASSWORD\"; \n
      exit; \n
      EOF \n
-     touch /opt/oracle/oradata/newbie.txt \n
+     export DB_PASSWORD=$(cat /opt/oracle/oradata/newbie.txt) \n
     "
     02_setupOML.sh: 
     "#!/bin/bash \n
