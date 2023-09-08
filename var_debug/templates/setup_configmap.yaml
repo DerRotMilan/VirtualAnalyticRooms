@@ -27,5 +27,6 @@ data:
      "
     03_cleanup.sh: 
      "#!/bin/bash \n 
-      rm /opt/oracle/oradata/02_setupOML-finished.txt \n
+      rm /opt/oracle/oradata/temppwd.txt \n
+      touch /opt/oracle/oradata/03_cleanup-finished.txt \n
      "
