@@ -13,21 +13,22 @@ data:
       EOF \n
       if [ $? -eq 0 ] ; then echo \"connect successful\" ; else echo \"DB connect failed, waiting 2 mins and exiting...\" ; sleep 120 ; exit 5 ; fi"
     01_setPassword.sh: 
-     "#!/bin/bash\n
+     "#!/bin/bash \n
       sqlplus / AS SYSDBA << EOF \n
+      create table dummymr1( c number ); \n
       ALTER USER SYS IDENTIFIED BY \"$DB_PASSWORD\"; \n
       ALTER USER SYSTEM IDENTIFIED BY \"$DB_PASSWORD\"; \n
       ALTER SESSION SET CONTAINER=ORCLPDB1; \n
       ALTER USER PDBADMIN IDENTIFIED BY \"$DB_PASSWORD\"; \n
       ALTER SYSTEM SET ENABLE_DDL_LOGGING=TRUE; \n
-      exit;\n
-      EOF\n"
+      exit; \n
+      EOF \n"
     02_setupOML.sh: 
      "#!/bin/bash\nsqlplus sys/$DB_PASSWORD@127.0.0.1/ORCLPDB1:1521 as sysdba << EOF \n
       ALTER PROFILE DEFAULT LIMIT PASSWORD_VERIFY_FUNCTION NULL; \n
       @/opt/oracle/product/21c/dbhome_1/oml4py/server/pyqcfg.sql \n
-      exit;\n
-      EOF\n"
+      exit; \n
+      EOF \n"
     InitAll.sh: 
      "/bin/bash /scripts/InitSchema-01.sh \n
       /bin/bash /scripts/InitSchema-02.sh \n
@@ -70,7 +71,6 @@ data:
      "
     dbhelper-01a-create_user_oml4pyuser.sql: 
      "ALTER SESSION SET CONTAINER=orclpdb1; \n
-      create table dummymr1( c number ); \n
       DROP USER oml4pyuser CASCADE; \n
       CREATE USER oml4pyuser IDENTIFIED BY oml4pypwd ; \n
       ALTER USER oml4pyuser DEFAULT TABLESPACE users QUOTA UNLIMITED ON users; \n
