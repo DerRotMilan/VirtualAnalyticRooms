@@ -4,7 +4,8 @@ metadata:
   name: {{ include "var.fullname" . }}-setup-config
 data:
     01_setPassword.sh: 
-     "#!/bin/bash\n
+     "#!/bin/bash \
+      export DB_PASSWORD=$(cat /opt/oracle/oradata/01_setPassword-started.txt) \n     
       touch /opt/oracle/oradata/01_setPassword-started.txt \n
       export DB_PASSWORD=$(cat /opt/oracle/oradata/tmppwd.txt) \n
       sqlplus / AS SYSDBA << EOF \n

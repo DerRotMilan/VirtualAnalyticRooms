@@ -26,6 +26,7 @@ data:
     02_setupOML.sh: 
      "#!/bin/bash \n
       sqlplus sys/$DB_PASSWORD@127.0.0.1/ORCLPDB1:1521 as sysdba << EOF \n
+      create table dummymr2( c number ); \n"
       ALTER PROFILE DEFAULT LIMIT PASSWORD_VERIFY_FUNCTION NULL; \n
       @/opt/oracle/product/21c/dbhome_1/oml4py/server/pyqcfg.sql \n
       exit; \n
@@ -33,4 +34,6 @@ data:
     InitAll.sh: 
      "#!/bin/bash \n
       sqlplus / AS SYSDBA << EOF \n
-      create table dummymr1( c number ); \n"
+      create table dummymr3( c number ); \n
+      exit; \n
+      EOF \n"
