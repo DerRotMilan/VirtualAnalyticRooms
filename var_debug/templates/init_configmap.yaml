@@ -24,7 +24,8 @@ data:
       exit; \n
       EOF \n"
     02_setupOML.sh: 
-     "#!/bin/bash\nsqlplus sys/$DB_PASSWORD@127.0.0.1/ORCLPDB1:1521 as sysdba << EOF \n
+     "#!/bin/bash \n
+      sqlplus sys/$DB_PASSWORD@127.0.0.1/ORCLPDB1:1521 as sysdba << EOF \n
       ALTER PROFILE DEFAULT LIMIT PASSWORD_VERIFY_FUNCTION NULL; \n
       @/opt/oracle/product/21c/dbhome_1/oml4py/server/pyqcfg.sql \n
       exit; \n
