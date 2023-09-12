@@ -1,4 +1,4 @@
-<!--- app-name: Virtual analytic Room "Radlaufstellen" -->
+<!--- app-name: Virtual analytic Room "Raddauerzaehlstellen" -->
 
 ## Virtual Analytic Room "Radlaufstellen"
 # Description
