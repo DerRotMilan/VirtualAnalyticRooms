@@ -18,4 +18,6 @@ data:
      @/opt/oracle/product/21c/dbhome_1/oml4py/server/pyqcfg.sql \n
      exit;\n
      EOF\n"
-    03_cleanup.sh: "#!/bin/bash\nrm/opt/oracle/oradata/tmppwd.txt\n"
+    03_cleanup.sh: 
+    "#!/bin/bash \n
+    rm/opt/oracle/oradata/tmppwd.txt \n"
