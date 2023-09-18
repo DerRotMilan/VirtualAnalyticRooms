@@ -11,7 +11,8 @@ data:
       ALTER USER SYSTEM IDENTIFIED BY \"$DB_PASSWORD\";\n
       ALTER SESSION SET CONTAINER=ORCLPDB1;\n
       ALTER USER PDBADMIN IDENTIFIED BY \"$DB_PASSWORD\";\n
-      exit;\nEOF\n"
+      exit;\n
+      EOF\n"
     02_setupOML.sh: 
      "#!/bin/bash\n
       export DB_PASSWORD=$(cat /opt/oracle/oradata/tmppwd.txt)\n
