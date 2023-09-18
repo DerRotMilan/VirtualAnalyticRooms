@@ -22,4 +22,5 @@ data:
       exit;\n
       EOF\n"
     03_cleanup.sh: 
-     "#!/bin/bash\nrm/opt/oracle/oradata/tmppwd.txt\n"
+     "#!/bin/bash\n
+      rm/opt/oracle/oradata/tmppwd.txt\n"
