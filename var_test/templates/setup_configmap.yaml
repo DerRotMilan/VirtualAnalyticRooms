@@ -3,7 +3,8 @@ apiVersion: v1
 metadata:
   name: {{ include "var.fullname" . }}-setup-config
 data:
-    01_setPassword.sh: "#!/bin/bash\n
+    01_setPassword.sh:
+     "#!/bin/bash\n
       export DB_PASSWORD=$(cat /opt/oracle/oradata/tmppwd.txt)\n
       sqlplus / AS SYSDBA << EOF\n
       ALTER USER SYS IDENTIFIED BY \"$DB_PASSWORD\";\n
