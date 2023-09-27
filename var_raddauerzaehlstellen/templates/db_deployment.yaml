@@ -31,8 +31,6 @@ spec:
               mountPath: /scripts
             - name: setup
               mountPath: /opt/oracle/scripts/setup
-            - name: dataloads
-              mountPath: /dataloads
           imagePullPolicy: Always
           env:
             - name: DB_SID
@@ -78,9 +76,3 @@ spec:
         - name: setup
           configMap:
             name: {{ include "var.fullname" . }}-setup-config
-        - name: dataloads
-          persistentVolumeClaim:
-            claimName: {{ include "var.fullname" . }}-dbhelper-pvc
-
-
-
