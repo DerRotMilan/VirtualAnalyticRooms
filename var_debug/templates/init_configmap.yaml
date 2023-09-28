@@ -3,32 +3,39 @@ apiVersion: v1
 metadata:
   name: {{ include "var.fullname" . }}-scripts-config
 data:
-    testconn.sh: "/opt/oracle/sqlcl/bin/sql /nolog << EOF \n
+    testconn.sh: 
+     "/opt/oracle/sqlcl/bin/sql /nolog << EOF \n
       whenever sqlerror exit failure; \n
       connect sys/$DB_PASSWORD@{{ .Values.database.hostname }}:1521/orclpdb1 as sysdba \n
-      select * from dual;\n
-      exit;\nEOF\n
-      if [ $? -eq 0 ] ; then echo \"connect successful\" ; else echo \"DB connect failed, waiting 2 mins and exiting...\" ; sleep 120 ; exit 5 ; fi"
+      select * from dual; \n
+      exit; \n
+      EOF \n
+      if [ $? -eq 0 ] ; then echo \"connect successful\" ; else echo \"DB connect failed, waiting 2 mins and exiting...\" ; sleep 120 ; exit 5 ; fi
+     "
     01_setPassword.sh: 
-     "#!/bin/bash\n
+     "#!/bin/bash \n
       sqlplus / AS SYSDBA << EOF \n
       ALTER USER SYS IDENTIFIED BY \"$DB_PASSWORD\"; \n
       ALTER USER SYSTEM IDENTIFIED BY \"$DB_PASSWORD\"; \n
       ALTER SESSION SET CONTAINER=ORCLPDB1; \n
       ALTER USER PDBADMIN IDENTIFIED BY \"$DB_PASSWORD\"; \n
-      exit;\n
-      EOF\n"
+      exit; \n
+      EOF \n
+     "
     02_setupOML.sh: 
-     "#!/bin/bash\nsqlplus sys/$DB_PASSWORD@127.0.0.1/ORCLPDB1:1521 as sysdba << EOF \n
-     ALTER PROFILE DEFAULT LIMIT PASSWORD_VERIFY_FUNCTION NULL; \n
-     @/opt/oracle/product/21c/dbhome_1/oml4py/server/pyqcfg.sql \n
-     exit;\n
-     EOF\n"
+     "#!/bin/bash \n
+      sqlplus sys/$DB_PASSWORD@127.0.0.1/ORCLPDB1:1521 as sysdba << EOF \n
+      ALTER PROFILE DEFAULT LIMIT PASSWORD_VERIFY_FUNCTION NULL; \n
+      @/opt/oracle/product/21c/dbhome_1/oml4py/server/pyqcfg.sql \n
+      exit; \n
+      EOF \n
+     "
     InitAll.sh: 
      "/bin/bash /scripts/InitSchema-01.sh \n
       /bin/bash /scripts/InitSchema-02.sh \n
       /bin/bash /scripts/InitSchema-03.sh \n 
-      /bin/bash /scripts/InitSchema-04.sh \n"
+      /bin/bash /scripts/InitSchema-04.sh \n
+     "
     InitSchema-01.sh: 
      "/opt/oracle/sqlcl/bin/sql sys/\"$DB_PASSWORD\"@{{ .Values.database.hostname }}/ORCLPDB1:1521 as sysdba << EOF \n
       @/scripts/dbhelper-01a-create_user_oml4pyuser.sql \n
@@ -37,7 +44,8 @@ data:
       @/scripts/dbhelper-02-create_table_raddauerzaehlstellen.sql \n
       @/scripts/dbhelper-03-create_sequence_raddauerzaehlstellen.sql \n
       @/scripts/dbhelper-04-create_trigger_raddauerzaehlstellen.sql \n
-      EOF\n"
+      EOF \n
+     "
     InitSchema-02.sh: 
      "curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_01_15min.csv -o /dataloads/rad_2022_01_15min.csv \n
       curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_02_15min.csv -o /dataloads/rad_2022_02_15min.csv \n
@@ -47,7 +55,7 @@ data:
       curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_06_15min.csv -o /dataloads/rad_2022_06_15min.csv \n
       curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/rad_2022_07_15min.csv -o /dataloads/rad_2022_07_15min.csv \n
       cd /dataloads \n
-      /usr/lib/oracle/21/client64/bin/sqlldr oml4pyuser/oml4pypwd@//{{ .Values.database.hostname }}/ORCLPDB1:1521 control=/scripts/dbhelper-05-load-raddauerzaehlstellen.ctl BAD=/dataloads/loadcsvs.bad\n
+      /usr/lib/oracle/21/client64/bin/sqlldr oml4pyuser/oml4pypwd@//{{ .Values.database.hostname }}/ORCLPDB1:1521 control=/scripts/dbhelper-05-load-raddauerzaehlstellen.ctl BAD=/dataloads/loadcsvs.bad \n
      "
     InitSchema-03.sh: 
      "curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/masked_data.DMP -o /dataloads/masked_data.DMP \n
@@ -62,7 +70,8 @@ data:
       @/scripts/dbhelper-08a-create_synonym_raddauerzaehlstellen_d.sql \n
       @/scripts/dbhelper-08b-create_synonym_raddauerzaehlstellen_v.sql \n
       @/scripts/dbhelper-08c-create_synonym_raddauerzaehlstellen_m.sql \n
-      exit;\nEOF\n
+      exit; \n
+      EOF \n
      "
     dbhelper-01a-create_user_oml4pyuser.sql: 
      "ALTER SESSION SET CONTAINER=orclpdb1; \n
@@ -85,7 +94,8 @@ data:
       GRANT CREATE MINING MODEL TO oml4pyuser; \n
       GRANT EXECUTE ON CTXSYS.CTX_DDL TO oml4pyuser; \n
       GRANT PYQADMIN TO oml4pyuser; \n
-      GRANT RESTRICTED SESSION TO oml4pyuser;"
+      GRANT RESTRICTED SESSION TO oml4pyuser;
+     "
     dbhelper-01b-create_user_ds1.sql: 
      "ALTER SESSION SET CONTAINER=orclpdb1; \n
       DROP USER ds1 CASCADE; \n
@@ -98,7 +108,8 @@ data:
       GRANT CREATE MINING MODEL TO ds1; \n
       GRANT EXECUTE ON CTXSYS.CTX_DDL TO ds1; \n
       GRANT PYQADMIN TO ds1; \n
-      GRANT RESTRICTED SESSION TO ds1; \n"
+      GRANT RESTRICTED SESSION TO ds1; \n
+     "
     dbhelper-01c-create_user_ds2.sql: 
      "ALTER SESSION SET CONTAINER=orclpdb1; \n
       DROP USER ds2 CASCADE; \n
@@ -110,7 +121,8 @@ data:
       GRANT CREATE PROCEDURE TO ds2; \n
       GRANT CREATE MINING MODEL TO ds2; \n
       GRANT EXECUTE ON CTXSYS.CTX_DDL TO ds2; \n
-      GRANT PYQADMIN TO ds2;\nGRANT RESTRICTED SESSION TO ds2; \n"
+      GRANT PYQADMIN TO ds2;\nGRANT RESTRICTED SESSION TO ds2; \n
+     "
     dbhelper-02-create_table_raddauerzaehlstellen.sql: 
      "CREATE TABLE oml4pyuser.raddauerzaehlstellen \n
       ( \"RDZID\"         INTEGER \n
@@ -123,7 +135,8 @@ data:
       , \"GESAMT\"        INTEGER \n
       ) \n
       TABLESPACE \"TBS_DMS\" \n
-      ; \n"
+      ; \n
+     "
     dbhelper-03-create_sequence_raddauerzaehlstellen.sql: 
       "CREATE SEQUENCE oml4pyuser.sq_raddauerzaehlstellen INCREMENT BY 1 START WITH 1;"
     dbhelper-04-create_trigger_raddauerzaehlstellen.sql: 
@@ -136,7 +149,7 @@ data:
       \tEND IF; \n
       END; \n
       / \n
-      "
+     "
     dbhelper-05-load-raddauerzaehlstellen.ctl: 
      "OPTIONS \n
       ( SKIP=1 \n
@@ -156,7 +169,7 @@ data:
       , RICHTUNG_2 \n
       , GESAMT \n
       ) \n
-      "
+     "
     dbhelper-06a-create_view_v_raddauerzaehlstellen_d.sql: 
      "CREATE OR REPLACE FORCE EDITIONABLE VIEW oml4pyuser.v_raddauerzaehlstellen_d \n
       AS \n
@@ -189,7 +202,8 @@ data:
            , gesamt \n
       FROM oml4pyuser.raddauerzaehlstellen \n
       ORDER BY datum \n
-      ; \n"
+      ; \n
+     "
     dbhelper-06b-create_view_v_raddauerzaehlstellen_v.sql: 
      "CREATE OR REPLACE FORCE EDITIONABLE VIEW oml4pyuser.v_raddauerzaehlstellen_v \n
       AS \n
@@ -207,10 +221,12 @@ data:
         GROUP BY datum \n
             , zaehlstelle \n
         ORDER BY datum \n
-        ; \n"
+        ; \n
+     "
     dbhelper-07a-grant_to_user_ds1.sql: 
      "GRANT READ ON oml4pyuser.v_raddauerzaehlstellen_d TO ds1; \n
-      GRANT READ ON oml4pyuser.v_raddauerzaehlstellen_v TO ds1;"
+      GRANT READ ON oml4pyuser.v_raddauerzaehlstellen_v TO ds1;
+     "
     dbhelper-07b-grant_to_user_ds2.sql: 
      "GRANT READ ON oml4pyuser.v_raddauerzaehlstellen_v TO ds2;"
     dbhelper-08a-create_synonym_raddauerzaehlstellen_d.sql: |
@@ -251,7 +267,8 @@ data:
       #spool install.txt \n
       #ALTER Session Set container=orclpdb1; \n
       #ALTER PROFILE DEFAULT LIMIT PASSWORD_VERIFY_FUNCTION NULL; \n
-      #@$ORACLE_HOME/oml4py/server/pyqcfg.sql\n#define permtbl_value = SYSAUX \n
+      #@$ORACLE_HOME/oml4py/server/pyqcfg.sql \n
+      #define permtbl_value = SYSAUX \n
       #define temptbl_value = TEMP \n
       #define orahome_value = /opt/oracle/product/21c/dbhome_1 \n
       #define pythonhome = /opt/oracle/product/21c/dbhome_1/python \n
@@ -265,4 +282,5 @@ data:
       GRANT CREATE MINING MODEL TO oml4pyuser; \n
       GRANT EXECUTE ON CTXSYS.CTX_DDL TO oml4pyuser; \n
       GRANT PYQADMIN TO oml4pyuser; \n
-      quit"
+      quit
+     "
