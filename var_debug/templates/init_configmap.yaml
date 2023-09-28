@@ -59,9 +59,7 @@ data:
      "
     InitSchema-03.sh: 
      "curl https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/VARdata/masked_data.DMP -o /dataloads/masked_data.DMP \n
-      touch /dataloads/nach_download.txt \n
       /usr/lib/oracle/21/client64/bin/impdp oml4pyuser/oml4pypwd@//{{ .Values.database.hostname }}/ORCLPDB1:1521 DIRECTORY=DPDIR DUMPFILE=masked_data.DMP NOLOGFILE=no TABLES=oml4pyuser.raddauerzaehlstellen REMAP_TABLE=oml4pyuser.raddauerzaehlstellen:raddauerzaehlstellen_m \n
-      touch /dataloads/nach_import.txt \n
      "
     InitSchema-04.sh: 
      "/opt/oracle/sqlcl/bin/sql sys/\"$DB_PASSWORD\"@{{ .Values.database.hostname }}/ORCLPDB1:1521 as sysdba << EOF \n
