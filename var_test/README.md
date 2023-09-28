@@ -1,4 +1,4 @@
-<!--- app-name: Virtual analytic Room "Raddauerzaehlstellen" -->
+<!--- app-name: Virtual analytic Room "Radlaufstellen" -->
 
 ## Virtual Analytic Room "Radlaufstellen"
 # Description
@@ -21,3 +21,4 @@ The same applies to CloudBeaver.
 - Korrekturen Jupyter Notebook
 - Umzug auf DerRotMilan GitHub
 - Korrekturen DPIMP
+- Debugging durch geteiltes PV (/dataloads)
