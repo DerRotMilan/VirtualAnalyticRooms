@@ -4,7 +4,7 @@ metadata:
   name: {{ include "var.fullname" . }}-dbhelper-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 5Gi
