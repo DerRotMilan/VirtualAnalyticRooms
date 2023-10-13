@@ -1,0 +1,10 @@
+cloudbeaver:
+  pvhostpath: /data/dir02
+  pvstorageclassname: local-path
+  pvvolumemode: Filesystem
+  pvvolumename: cbpvdir02
+  pvcvolumename: cbpvdir02
+
+verrazzano:
+  OAMdeploy: true
+  domainsuffix: 141.144.197.116.nip.io
