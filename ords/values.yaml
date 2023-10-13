@@ -1,0 +1,14 @@
+replicaCount: 1
+
+ords:
+  secret:
+    secretName: ords-secret
+    connString_key:  conn_string.txt
+
+image:
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 8080
+

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  {{ include "oml4py.fullname" . }}
+  labels:
+    {{- include "oml4py.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+            {{- include "oml4py.selectorLabels" . | nindent 6 }}
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        {{- include "oml4py.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: app
+          image: fra.ocir.io/frul1g8cgfam/pub_oml4pyuc:latest
+          command: ["/opt/python/bin/jupyter"]
+          args: ["notebook","--ip=0.0.0.0","--port=8888","--no-browser","--allow-root","--notebook-dir=/notebooks"]
+          env:
+            - name: LD_LIBRARY_PATH
+              value: "/opt/oracle/instantclient_21_6:/opt/python/lib"
+          ports:
+            - containerPort: 8888
+              name: oml4py
+          volumeMounts:
+            - name: notebooks
+              mountPath: /notebooks
+          imagePullPolicy: IfNotPresent
+      volumes:
+        - name: notebooks
+          persistentVolumeClaim:
+            claimName: oml4py-pvc
+
+
+
+
+

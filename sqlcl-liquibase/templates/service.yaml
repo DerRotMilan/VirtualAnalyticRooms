@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name:  {{ include "sqlcl.fullname" . }}
+spec:
+  selector:
+      {{- include "sqlcl.selectorLabels" . | nindent 6 }}
+  ports:
+    - port: {{ .Values.service.consoleport }}
+      targetPort: 8080
+      name: console
+  type: {{ .Values.service.type }}
