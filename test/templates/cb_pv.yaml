@@ -8,7 +8,7 @@ spec:
   capacity:
     storage: 10Gi
   hostPath:
-    path: /data/dir02
+    path: /mnt/path2
     type: ''
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: local-path
