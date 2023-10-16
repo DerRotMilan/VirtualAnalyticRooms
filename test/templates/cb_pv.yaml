@@ -4,7 +4,7 @@ metadata:
   name: test-cloudbeaver-pv
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   capacity:
     storage: 10Gi
   hostPath:
