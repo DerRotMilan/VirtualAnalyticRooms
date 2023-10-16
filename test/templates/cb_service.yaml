@@ -1,10 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: test-cloudbeaver-svc
+  name:  {{ include "var.fullname" . }}-cloudbeaver
+  annotations:
+    var/component: cloudbeaver
+    var/name: raddauerzaehlstellen
+    var/shortdesc: 'CloudBeaver'
+  creationTimestamp: "2022-11-03T20:59:10Z"
 spec:
   selector:
-    test_cloudbeaver
+      {{- include "var.selectorLabels" . | nindent 6 }}
   ports:
     - port: 8080
       targetPort: 8978
