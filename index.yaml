@@ -3,9 +3,9 @@ entries:
   analytics-server:
   - apiVersion: v2
     appVersion: 6.4.0
-    created: "2023-10-16T15:57:10.273563708+02:00"
+    created: "2023-10-16T16:20:20.169933623+02:00"
     description: Oracle Analytics Server
-    digest: ddef586229bc77e86cfbb484a03ecf1c82100ce50c364c5cede0aca6054e5641
+    digest: 121b2d18e765f79556c91cfd712ea996e5ae094760d3d361c01ffcded58df99e
     icon: https://ilfur.github.io/VirtualAnalyticRooms/oas_logo.png
     name: analytics-server
     type: application
@@ -15,9 +15,9 @@ entries:
   cloudbeaver:
   - apiVersion: v2
     appVersion: 21.3.3
-    created: "2023-10-16T15:57:10.281959008+02:00"
+    created: "2023-10-16T16:20:20.179500224+02:00"
     description: DBeaver Web UI Community Edition
-    digest: f8bf6dac0d58c34fdd0e537ba5ef63a3f713067edb2692151e00eed8c68457ac
+    digest: 43608ee791930c6e10b6cdbab1a63f15c9cb2d94ab52048f2a045a1821dff1f7
     icon: https://ilfur.github.io/VirtualAnalyticRooms/cloudbeaver_logo.png
     name: cloudbeaver
     type: application
@@ -27,10 +27,10 @@ entries:
   fallwerte:
   - apiVersion: v2
     appVersion: 21.3.0
-    created: "2023-10-16T15:57:10.290379308+02:00"
+    created: "2023-10-16T16:20:20.188382524+02:00"
     description: analytic software stack - data, O21c, Jupyter, Cloudbeaver, Oracle
       Analytics
-    digest: 55b5300c0de11511d4eeddd971facfbcf37304810b5cd83abbcead098237c878
+    digest: 8d34df3c54f19c33b441b3d892eb33d8378d154ac93a41659f4e90dc3bfd1af3
     icon: https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/Asklepios.png
     name: fallwerte
     type: application
@@ -40,9 +40,9 @@ entries:
   goldengate-bigdata:
   - apiVersion: v2
     appVersion: 21.4.0.0.3
-    created: "2023-10-16T15:57:10.298648008+02:00"
+    created: "2023-10-16T16:20:20.197600124+02:00"
     description: Oracle GoldenGate Microservices for BigData
-    digest: e5994d5cc388b7dcf90c8ced2b16ab646d35b388ee0ac0362b97d2315f2de75a
+    digest: 78790f322739b2b128634f4b58fda7d4d9ab58e1bd7e3bd1e199bfb6e9fee0ca
     icon: https://ilfur.github.io/VirtualAnalyticRooms/goldengate_logo.png
     name: goldengate-bigdata
     type: application
@@ -52,9 +52,9 @@ entries:
   goldengate-mssql:
   - apiVersion: v2
     appVersion: 21.3.0.0.0
-    created: "2023-10-16T15:57:10.307166308+02:00"
+    created: "2023-10-16T16:20:20.206177525+02:00"
     description: Oracle GoldenGate Microservices for MS SQL Server
-    digest: a8b3baa91ae20b3a3a9df8b28eb4c3e4bd8eed6c1a0d638a203461445aa3f207
+    digest: 0f77e0631fff95cae546a2045377a4a7420e2969ce8539acce16d818ff349d96
     icon: https://ilfur.github.io/VirtualAnalyticRooms/goldengate_logo.png
     name: goldengate-mssql
     type: application
@@ -64,9 +64,9 @@ entries:
   goldengate-mysql:
   - apiVersion: v2
     appVersion: 21.3.0.0.0
-    created: "2023-10-16T15:57:10.316124808+02:00"
+    created: "2023-10-16T16:20:20.215464425+02:00"
     description: Oracle GoldenGate Microservices for MySQL
-    digest: 6770f9fbc7a06a88539ffcf6a5296389174f5bbb538c019b6a068d2ccbcae45e
+    digest: 41058c68c7c2a85e1d4983ed1ac29e47b9033dda7eba652df216d1cc0f35053c
     icon: https://ilfur.github.io/VirtualAnalyticRooms/goldengate_logo.png
     name: goldengate-mysql
     type: application
@@ -76,9 +76,9 @@ entries:
   goldengate-oracle:
   - apiVersion: v2
     appVersion: 21.3.0.0.0
-    created: "2023-10-16T15:57:10.324789208+02:00"
+    created: "2023-10-16T16:20:20.223719025+02:00"
     description: Oracle GoldenGate Microservices for Oracle Database
-    digest: 62e39195988bbd2ec58f0b7e8d1b09045093004254d280689a1225be86bb41d7
+    digest: 395dd69f0e5cb438eeac4d38e8c81e5bb233c5db9f81fb40c3a30ced12d306f4
     icon: https://ilfur.github.io/VirtualAnalyticRooms/goldengate_logo.png
     name: goldengate-oracle
     type: application
@@ -88,9 +88,9 @@ entries:
   goldengate-postgres:
   - apiVersion: v2
     appVersion: 21.3.0.0.0
-    created: "2023-10-16T15:57:10.333707108+02:00"
+    created: "2023-10-16T16:20:20.231416525+02:00"
     description: Oracle GoldenGate Microservices for Postgres
-    digest: 48fa31db41d9017788b2abc92423da43b3d32f7ac427b0e25483ab22e91a6d9e
+    digest: b3ac56a91f9b2a90a72d430b0f798de6e2ec0aa552f0e5877ccdc0aaddd7dda8
     icon: https://ilfur.github.io/VirtualAnalyticRooms/goldengate_logo.png
     name: goldengate-postgres
     type: application
@@ -100,9 +100,9 @@ entries:
   graph-server:
   - apiVersion: v2
     appVersion: 22.2.0.0.0
-    created: "2023-10-16T15:57:10.342210108+02:00"
+    created: "2023-10-16T16:20:20.238315926+02:00"
     description: Oracle Graph & RDF Server with UI
-    digest: e71cf1a0bdd81ae93d74512921724092339022e3ffd9f0e613a4192235f4d92e
+    digest: 4a75e9db98972357e060fbe59df7832701d34aad9eeb46b802ffc7cf70e816fd
     icon: https://ilfur.github.io/VirtualAnalyticRooms/graph_logo.png
     name: graph-server
     type: application
@@ -114,7 +114,7 @@ entries:
       category: MachineLearning
     apiVersion: v2
     appVersion: 1.5.0
-    created: "2023-10-16T15:57:10.368082408+02:00"
+    created: "2023-10-16T16:20:20.259904326+02:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -128,7 +128,7 @@ entries:
     description: JupyterHub brings the power of notebooks to groups of users. It gives
       users access to computational environments and resources without burdening the
       users with installation and maintenance tasks.
-    digest: a75f7aac186099fcc01fe0e9b7cff5ab9fe48372e3a8bd65e5c4a58a37eb2214
+    digest: fa61b5ffd14b0697e836084514c6ee83bf594b605d16df5063db52cc5d01f4b4
     home: https://jupyter.org/hub
     icon: https://ilfur.github.io/VirtualAnalyticRooms/jupyterhub_logo.png
     keywords:
@@ -149,7 +149,7 @@ entries:
       category: Infrastructure
     apiVersion: v2
     appVersion: 3.2.0
-    created: "2023-10-16T15:57:10.392997008+02:00"
+    created: "2023-10-16T16:20:20.279552027+02:00"
     dependencies:
     - condition: zookeeper.enabled
       name: zookeeper
@@ -163,7 +163,7 @@ entries:
     description: Apache Kafka is a distributed streaming platform designed to build
       real-time pipelines and can be used as a message broker or as a replacement
       for a log aggregation solution for big data applications.
-    digest: 523622add21f6744a0597752df27c6ad05bb6a5505a4fd704ca4b52debeb719e
+    digest: 7708d09d8b8492ba1b10b803eadb967bca8cbeb392ce98c98c133907f66f10a0
     home: https://github.com/bitnami/charts/tree/master/bitnami/kafka
     icon: https://ilfur.github.io/VirtualAnalyticRooms/kafka_logo.png
     keywords:
@@ -185,9 +185,9 @@ entries:
   oml4py-notebook:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2023-10-16T15:57:10.402968708+02:00"
+    created: "2023-10-16T16:20:20.287345427+02:00"
     description: Oracle Machine Learning 4 Python Jupyter Notebook
-    digest: 3649b987ee81cbce68bce6ab826393e15e929cc8a7f8f0026d79e1c94fb0a619
+    digest: e130b41d09e238be45b884d566d7679e1abf595114ac931066970736ecd69986
     icon: https://ilfur.github.io/VirtualAnalyticRooms/oml4py_logo.png
     name: oml4py-notebook
     type: application
@@ -197,9 +197,9 @@ entries:
   ords:
   - apiVersion: v2
     appVersion: 22.2.0
-    created: "2023-10-16T15:57:10.412615208+02:00"
+    created: "2023-10-16T16:20:20.296108627+02:00"
     description: Oracle Apex, SQL Developer Web and REST Gateway
-    digest: 384351602db54ecc4f446b176fd257f02d4bac697bdedcff879693239d302419
+    digest: a83595064874604ca4967135bcd0834565e02212e6e55a3134f1234d14b3f5bf
     icon: https://ilfur.github.io/VirtualAnalyticRooms/ords_logo.png
     name: ords
     type: application
@@ -209,9 +209,9 @@ entries:
   sqlcl-liquibase:
   - apiVersion: v2
     appVersion: 21.3.0.0.0
-    created: "2023-10-16T15:57:10.422423308+02:00"
+    created: "2023-10-16T16:20:20.304338628+02:00"
     description: Oracle sqlcl with liquibase integration
-    digest: f0da4a2a8e3986b308079eb2557ef81caa62d5176664b97cfd3ac871f3ca67eb
+    digest: bfdc4a2da04dd16da6ebc4440f49ad46a743f030fc6826ead021ec3737267837
     icon: https://ilfur.github.io/VirtualAnalyticRooms/liquibase_logo.png
     name: sqlcl-liquibase
     type: application
@@ -221,9 +221,9 @@ entries:
   stream-analytics:
   - apiVersion: v2
     appVersion: 19.1.0.0.6.3
-    created: "2023-10-16T15:57:10.433288408+02:00"
+    created: "2023-10-16T16:20:20.312588628+02:00"
     description: Oracle GoldenGate Stream Analytics
-    digest: 082719c788382aa3f5468ec2746f5fca81b8ac304105bb267cea08e177409ff8
+    digest: 8b8b2da0bf1eac64dbeab07f204fd1337f7ab6d3ccd449aabc4e49d42c10f518
     icon: https://ilfur.github.io/VirtualAnalyticRooms/osa_logo.png
     name: stream-analytics
     type: application
@@ -233,9 +233,9 @@ entries:
   test:
   - apiVersion: v2
     appVersion: 21.3.0
-    created: "2023-10-16T15:57:10.442312408+02:00"
+    created: "2023-10-16T16:20:20.320257328+02:00"
     description: Cloudbeaver
-    digest: 1ba36f8ecd66ca7e8361c023318373f4dab35beaf33657bf36bdb3a2babe69e7
+    digest: e99c4f0b5569a368ace467046170315544fce0e2a4920ac70f3e2132ecf34a63
     icon: https://raw.githubusercontent.com/DerRotMilan/VARs/main/Radfahrer_Farben.png
     name: test
     type: application
@@ -245,9 +245,9 @@ entries:
   var_dashboard:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-10-16T15:57:10.453842708+02:00"
+    created: "2023-10-16T16:20:20.332049529+02:00"
     description: Virtual Analytic Rooms Dashboard App
-    digest: db9aeebcd2d3842a69bb85121061b208fd9321e7d6fbcd820f727f8eddf0f526
+    digest: e0167dc72cc57d881f0404259381bd9e3443bc3e660ec702821b685e4e3f6836
     icon: https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/HomePage.png
     name: var_dashboard
     type: application
@@ -257,10 +257,10 @@ entries:
   vardebug:
   - apiVersion: v2
     appVersion: 21.3.0
-    created: "2023-10-16T15:57:10.462064908+02:00"
+    created: "2023-10-16T16:20:20.341801429+02:00"
     description: analytic software stack - data, O21c, Jupyter, Cloudbeaver, Oracle
       Analytics
-    digest: 4edc7d4f84e2b5784dcae9cfcc1dcc42f8aa3c7377bcd1b01ea819ca3d9fa0ee
+    digest: 8726df39953927f744cfd21feec69c0c88b46798d32f9d8cb9d0f5b486625d93
     icon: https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/Radfahrer_Farben.png
     name: vardebug
     type: application
@@ -270,10 +270,10 @@ entries:
   varraddauerzaehlstellen:
   - apiVersion: v2
     appVersion: 21.3.0
-    created: "2023-10-16T15:57:10.471049008+02:00"
+    created: "2023-10-16T16:20:20.350478429+02:00"
     description: analytic software stack - data, O21c, Jupyter, Cloudbeaver, Oracle
       Analytics
-    digest: 54cfd027cd6df82f5bf2aa11bee831bc180edd5b7c59ff431f63915eb392c6ca
+    digest: da7b851d94e49501e83c41fd96cedb30335fc90385b4fee7087b8c3be5f69457
     icon: https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/Radfahrer_Farben.png
     name: varraddauerzaehlstellen
     type: application
@@ -283,14 +283,14 @@ entries:
   vartest:
   - apiVersion: v2
     appVersion: 21.3.0
-    created: "2023-10-16T15:57:10.479842008+02:00"
+    created: "2023-10-16T16:20:20.358203229+02:00"
     description: analytic software stack - data, O21c, Jupyter, Cloudbeaver, Oracle
       Analytics
-    digest: c44a6971eb588bb9890c66b3c6b3042eedd70df3c5fb7304be335f2e9fb12164
+    digest: 30d61ebecae081efd2b046a61b4a1644b15b57124d596cb7dff37d39ff35d3ef
     icon: https://raw.githubusercontent.com/DerRotMilan/VirtualAnalyticRooms/main/Radfahrer_Farben.png
     name: vartest
     type: application
     urls:
     - vartest-1.0.4.tgz
     version: 1.0.4
-generated: "2023-10-16T15:57:10.264358608+02:00"
+generated: "2023-10-16T16:20:20.161775623+02:00"

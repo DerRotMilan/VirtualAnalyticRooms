@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name:  test-cloudbeaver-svc
+  annotations:
+    var/component: cloudbeaver
+    var/name: test-cloudbeaver
+    var/shortdesc: 'CloudBeaver'
+spec:
+  selector:
+      test_cloudbeaver
+  ports:
+    - port: 8080
+      targetPort: 8978
+  type: LoadBalancer
