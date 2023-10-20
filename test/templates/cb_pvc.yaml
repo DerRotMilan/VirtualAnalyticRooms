@@ -10,3 +10,4 @@ spec:
       storage: 5Gi
   storageClassName: local-path
   volumeMode: Filesystem
+  volumeName: {{ include "var.fullname" . }}-cloudbeaver-pv
