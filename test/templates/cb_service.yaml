@@ -6,7 +6,6 @@ metadata:
     var/component: cloudbeaver
     var/name: raddauerzaehlstellen
     var/shortdesc: 'CloudBeaver'
-  creationTimestamp: "2022-11-03T20:59:10Z"
 spec:
   selector:
       {{- include "var.selectorLabels" . | nindent 6 }}
