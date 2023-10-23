@@ -12,8 +12,4 @@ spec:
   ports:
     - port: 8080
       targetPort: 8978
-  type: LoadBalancer
-status:
-  loadBalancer:
-    ingress:
-    - ip: 172.28.94.146
+
