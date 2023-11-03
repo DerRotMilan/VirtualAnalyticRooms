@@ -13,4 +13,3 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: local-path
   volumeMode: Filesystem
-dhgg c4
